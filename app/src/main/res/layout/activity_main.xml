@@ -33,7 +33,7 @@
         </LinearLayout>
 
         <!-- The navigation drawer -->
-        <huhx0015.interview.club.ui.layout.ScrimInsetsFrameLayout
+        <huhx0015.interview.club.ui.layouts.ScrimInsetsFrameLayout
             android:layout_width="240dp"
             android:layout_height="match_parent"
             android:layout_gravity="start"
@@ -61,7 +61,7 @@
 
             </LinearLayout>
 
-        </huhx0015.interview.club.ui.layout.ScrimInsetsFrameLayout>
+        </huhx0015.interview.club.ui.layouts.ScrimInsetsFrameLayout>
 
     </android.support.v4.widget.DrawerLayout>
 

@@ -12,7 +12,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import huhx0015.interview.club.R;
-import huhx0015.interview.club.SinchService;
+import huhx0015.interview.club.services.SinchService;
 
 public class LoginActivity extends BaseActivity implements SinchService.StartFailedListener {
 

@@ -16,6 +16,7 @@ import android.widget.TextView;
 import java.util.List;
 
 import huhx0015.interview.club.activities.BaseActivity;
+import huhx0015.interview.club.services.SinchService;
 
 public class IncomingCallScreenActivity extends BaseActivity {
 

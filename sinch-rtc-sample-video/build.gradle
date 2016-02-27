@@ -8,10 +8,6 @@ buildscript {
 }
 apply plugin: 'com.android.application'
 
-repositories {
-    mavenCentral()
-}
-
 android {
     compileSdkVersion 19
     buildToolsVersion "21.0.0"

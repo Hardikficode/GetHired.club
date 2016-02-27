@@ -1,4 +1,4 @@
-package huhx0015.interview.club;
+package huhx0015.interview.club.services;
 
 import com.sinch.android.rtc.AudioController;
 import com.sinch.android.rtc.ClientRegistration;
@@ -16,6 +16,9 @@ import android.content.Intent;
 import android.os.Binder;
 import android.os.IBinder;
 import android.util.Log;
+
+import huhx0015.interview.club.IncomingCallScreenActivity;
+import huhx0015.interview.club.R;
 
 public class SinchService extends Service {
 

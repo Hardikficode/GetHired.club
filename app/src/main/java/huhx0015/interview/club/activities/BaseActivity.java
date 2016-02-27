@@ -7,7 +7,7 @@ import android.content.ServiceConnection;
 import android.os.Bundle;
 import android.os.IBinder;
 
-import huhx0015.interview.club.SinchService;
+import huhx0015.interview.club.services.SinchService;
 
 /**
  * Created by Michael Yoon Huh on 2/26/2016.

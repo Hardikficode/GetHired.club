@@ -25,6 +25,7 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 import huhx0015.interview.club.activities.BaseActivity;
+import huhx0015.interview.club.services.SinchService;
 
 public class CallScreenActivity extends BaseActivity {
 

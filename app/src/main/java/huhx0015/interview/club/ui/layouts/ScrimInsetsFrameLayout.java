@@ -1,4 +1,4 @@
-package huhx0015.interview.club.ui.layout;
+package huhx0015.interview.club.ui.layouts;
 
 import android.content.Context;
 import android.content.res.TypedArray;

@@ -13,7 +13,8 @@
         android:id="@+id/login_logo_image"
         android:src="@drawable/interview_club_banner"
         android:scaleType="fitCenter"
-        android:padding="16dp" />
+        android:padding="16dp"
+        android:layout_gravity="center" />
 
     <LinearLayout
         android:layout_width="fill_parent"
@@ -53,12 +54,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:background="@color/button_material_dark"
         android:minHeight="56dp"
         android:minWidth="132dp"
         android:textColor="@android:color/white"
         android:textSize="22sp"
-        android:textStyle="bold" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true"
+        android:textStyle="bold" android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
         android:text="LOGIN"
         android:layout_marginTop="40dp" />
 
