@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="sinch_app_key">6d524aa3-d686-4714-a5ba-811c97c6e359</string>
+    <string name="sinch_app_secret">uZc9BIVU9UqCM8MyfEFSPw==</string>
+    <string name="sinch_environment">sandbox.sinch.com</string>
+</resources>

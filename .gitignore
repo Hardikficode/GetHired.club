@@ -6,3 +6,5 @@
 .DS_Store
 /build
 /captures
+sinch-rtc-sample-calling/res/values/keys.xml
+sinch-rtc-sample-video/res/values/keys.xml

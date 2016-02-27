@@ -19,9 +19,9 @@ import android.util.Log;
 
 public class SinchService extends Service {
 
-    private static final String APP_KEY = "enter-application-key";
-    private static final String APP_SECRET = "enter-application-secret";
-    private static final String ENVIRONMENT = "sandbox.sinch.com";
+    private static String APP_KEY;
+    private static String APP_SECRET;
+    private static String ENVIRONMENT;
 
     public static final String CALL_ID = "CALL_ID";
     static final String TAG = SinchService.class.getSimpleName();
@@ -35,6 +35,10 @@ public class SinchService extends Service {
     @Override
     public void onCreate() {
         super.onCreate();
+
+        APP_KEY = getResources().getString(R.string.sinch_app_key);
+        APP_SECRET = getResources().getString(R.string.sinch_app_secret);
+        ENVIRONMENT = getResources().getString(R.string.sinch_environment);
     }
 
     @Override
