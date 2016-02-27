@@ -1,12 +1,9 @@
 package huhx0015.interview.club.activities;
 
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ArrayAdapter;
@@ -42,7 +39,7 @@ public class MainActivity extends AppCompatActivity {
 
         // drawer
         mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
-        mDrawerList = (ListView) findViewById(R.id.drawer);
+        mDrawerList = (ListView) findViewById(R.id.drawer_list_view);
 
         mDrawerList.setAdapter(new ArrayAdapter<>(this,
                 R.layout.drawer_list_item, R.id.drawer_item_title, mDrawerItemTitles));
