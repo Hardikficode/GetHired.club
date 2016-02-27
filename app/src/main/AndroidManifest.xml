@@ -18,16 +18,33 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+
         <activity
             android:name=".activities.MainActivity"
             android:label="@string/app_name"
             android:theme="@style/AppTheme.NoActionBar">
-            <!--<service android:name=".SinchService"></service>-->
+            <service android:name=".SinchService"></service>
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <activity
+            android:name=".activities.LoginActivity"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait">
+        </activity>
+
+        <activity android:name=".CallScreenActivity"/>
+
+        <activity android:name=".IncomingCallScreenActivity"
+            android:screenOrientation="portrait"
+            android:noHistory="true"/>
+
+        <activity android:name=".activities.PlaceCallActivity"
+            android:screenOrientation="portrait"/>
+
     </application>
 
 </manifest>
