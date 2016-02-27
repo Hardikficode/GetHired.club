@@ -1,0 +1,52 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 23
+    buildToolsVersion "23.0.2"
+
+    defaultConfig {
+        applicationId "huhx0015.interview.club"
+        minSdkVersion 16
+        targetSdkVersion 23
+        versionCode 1
+        versionName "1.0"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+
+    // INTEGRATED LIBARIES
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+    testCompile 'junit:junit:4.12'
+    compile files('libs/sinch-android-rtc-3.9.2.jar')
+
+    // ANDROID SUPPORT LIBRARIES
+    compile 'com.android.support:appcompat-v7:23.1.1'
+    compile 'com.android.support:support-v4:23.1.1'
+    compile 'com.android.support:design:23.1.1'
+    compile 'com.android.support:cardview-v7:23.1.1'
+    compile 'com.android.support:recyclerview-v7:23.1.1'
+    compile 'com.android.support:multidex:1.0.1'
+    compile 'com.google.code.gson:gson:2.5'
+
+    // ANNOTATION LIBRARIES
+    provided 'org.glassfish:javax.annotation:10.0-b28'
+
+    // THIRD-PARTY LIBRARIES
+    compile 'com.squareup.picasso:picasso:2.5.2'
+    compile 'com.squareup.retrofit:retrofit:2.0.0-beta3'
+    compile 'com.squareup.retrofit:converter-gson:2.0.0-beta2'
+    compile 'com.squareup.okhttp3:okhttp:3.1.2'
+    compile 'com.squareup.okhttp3:okhttp-urlconnection:3.1.2'
+    compile 'com.jakewharton:butterknife:7.0.1'
+
+    // MICROSOFT LIBRARIES
+    //compile 'com.microsoft.projectoxford:emotion:1.0.0'
+    //compile 'com.microsoft.projectoxford:face:1.0.0'
+}

@@ -1,0 +1,1 @@
+include ':app', ':sinch-rtc-sample-calling', ':sinch-rtc-sample-messaging', ':sinch-rtc-sample-pstn', ':sinch-rtc-sample-push', ':sinch-rtc-sample-video'
