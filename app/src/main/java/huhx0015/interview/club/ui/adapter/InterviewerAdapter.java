@@ -3,7 +3,6 @@ package huhx0015.interview.club.ui.adapter;
 import android.app.Activity;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,13 +11,13 @@ import android.widget.TextView;
 import com.squareup.picasso.Picasso;
 import java.util.List;
 import huhx0015.interview.club.R;
-import huhx0015.interview.club.model.Interviewee;
+import huhx0015.interview.club.model.Interviewer;
 
 /**
  * Created by Michael Yoon Huh on 9/3/2015.
  */
 
-public class IntervieweeAdapter extends RecyclerView.Adapter<IntervieweeAdapter.ListViewHolder> {
+public class InterviewerAdapter extends RecyclerView.Adapter<InterviewerAdapter.ListViewHolder> {
 
     /**
      * CLASS VARIABLES ________________________________________________________________________
@@ -28,23 +27,19 @@ public class IntervieweeAdapter extends RecyclerView.Adapter<IntervieweeAdapter.
     private Activity activity;
 
     // LIST VARIABLES
-    private List<Interviewee> intervieweeList;
+    private List<Interviewer> interviewerList;
 
     // LOGGING VARIABLES
-    private static final String LOG_TAG = IntervieweeAdapter.class.getSimpleName();
+    private static final String LOG_TAG = InterviewerAdapter.class.getSimpleName();
 
-    /**
-     * INITIALIZATION METHODS _________________________________________________________________
-     **/
+    /** INITIALIZATION METHODS _________________________________________________________________ **/
 
-    public IntervieweeAdapter(List<Interviewee> list, Activity act) {
+    public InterviewerAdapter(List<Interviewer> list, Activity act) {
         this.activity = act;
-        this.intervieweeList = list;
+        this.interviewerList = list;
     }
 
-    /**
-     * EXTENSION METHODS ______________________________________________________________________
-     **/
+    /** EXTENSION METHODS ______________________________________________________________________ **/
 
     // onCreateViewHolder: This method is called when the custom ViewHolder needs to be initialized.
     // The layout of each item of the RecyclerView is inflated using LayoutInflater, passing the
@@ -52,10 +47,17 @@ public class IntervieweeAdapter extends RecyclerView.Adapter<IntervieweeAdapter.
     @Override
     public ListViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
 
-        // Inflates the layout given the XML layout file for the item view.
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.view_interviewee_row, parent, false);
 
-        return new ListViewHolder(view);
+        ListViewHolder viewHolder = new ListViewHolder(view, new ListViewHolder.OnItemViewHolderClick() {
+
+            @Override
+            public void onItemClick(View caller, int position) {
+                // TODO: LAUNCH VIEW HERE.
+            }
+        });
+
+        return viewHolder;
     }
 
     // onBindViewHolder(): Overrides the onBindViewHolder to specify the contents of each item of
@@ -64,11 +66,11 @@ public class IntervieweeAdapter extends RecyclerView.Adapter<IntervieweeAdapter.
     public void onBindViewHolder(ListViewHolder holder, int position) {
 
         // Sets the TextView objects.
-        holder.intervieweeNameText.setText(intervieweeList.get(position).getFullName());
-        holder.intervieweeCompanyText.setText(intervieweeList.get(position).getCurrentCompany());
-        holder.intervieweePositionText.setText(intervieweeList.get(position).getPosition());
+        holder.intervieweeNameText.setText(interviewerList.get(position).getFullName());
+        holder.intervieweeCompanyText.setText(interviewerList.get(position).getCurrentCompany());
+        holder.intervieweePositionText.setText(interviewerList.get(position).getPosition());
 
-        int avatarImage = intervieweeList.get(position).getAvatar();
+        int avatarImage = interviewerList.get(position).getAvatar();
 
         // Loads the referenced image into the ImageView object.
         Picasso.with(activity)
@@ -79,7 +81,7 @@ public class IntervieweeAdapter extends RecyclerView.Adapter<IntervieweeAdapter.
     // getItemCount(): Returns the number of items present in the data.
     @Override
     public int getItemCount() {
-        return intervieweeList.size();
+        return interviewerList.size();
     }
 
     // onAttachedToRecyclerView(): Overrides the onAttachedToRecyclerView method.
@@ -90,7 +92,7 @@ public class IntervieweeAdapter extends RecyclerView.Adapter<IntervieweeAdapter.
 
     /** SUBCLASSES _____________________________________________________________________________ **/
 
-    public static class ListViewHolder extends RecyclerView.ViewHolder {
+    public static class ListViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
         /** SUBCLASS VARIABLES _________________________________________________________________ **/
 
@@ -101,9 +103,11 @@ public class IntervieweeAdapter extends RecyclerView.Adapter<IntervieweeAdapter.
         TextView intervieweeCompanyText;
         TextView intervieweePositionText;
 
+        public OnItemViewHolderClick interviewerItemListener;
+
         /** SUBCLASS METHODS ___________________________________________________________________ **/
 
-        ListViewHolder(View itemView) {
+        ListViewHolder(View itemView, OnItemViewHolderClick listener) {
 
             super(itemView);
 
@@ -112,6 +116,21 @@ public class IntervieweeAdapter extends RecyclerView.Adapter<IntervieweeAdapter.
             intervieweeNameText = (TextView) itemView.findViewById(R.id.name_text);
             intervieweeCompanyText = (TextView) itemView.findViewById(R.id.company_text);
             intervieweePositionText = (TextView) itemView.findViewById(R.id.position_text);
+
+            if (listener != null) {
+                interviewerItemListener = listener;
+                itemView.setOnClickListener(this);
+            }
+        }
+
+        @Override
+        public void onClick(View v) {
+            int itemPos = getAdapterPosition();
+            interviewerItemListener.onItemClick(v, itemPos);
+        }
+
+        public interface OnItemViewHolderClick {
+            void onItemClick(View caller, int position);
         }
     }
 }

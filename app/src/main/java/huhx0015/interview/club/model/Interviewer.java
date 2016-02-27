@@ -7,7 +7,7 @@ import huhx0015.interview.club.R;
 /**
  * Created by Michael Yoon Huh on 2/27/2016.
  */
-public class Interviewee {
+public class Interviewer {
 
     /** CLASS VARIABLES ________________________________________________________________________ **/
 
@@ -21,7 +21,7 @@ public class Interviewee {
 
     /** CONSTRUCTOR METHODS ____________________________________________________________________ **/
 
-    public Interviewee() {
+    public Interviewer() {
         this.fullName = "";
         this.currentCompany = "";
         this.position = "";
@@ -29,7 +29,7 @@ public class Interviewee {
         this.previousCompanies = new ArrayList<>();
     }
 
-    public Interviewee(String name, String company, String position, int avatar, List<String> previousCompanies) {
+    public Interviewer(String name, String company, String position, int avatar, List<String> previousCompanies) {
         this.fullName = name;
         this.currentCompany = company;
         this.position = position;
