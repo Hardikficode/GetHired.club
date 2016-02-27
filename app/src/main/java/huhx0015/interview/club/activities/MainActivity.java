@@ -1,4 +1,4 @@
-package huhx0015.interview.club;
+package huhx0015.interview.club.activities;
 
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -8,6 +8,8 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+
+import huhx0015.interview.club.R;
 
 public class MainActivity extends AppCompatActivity {
 
