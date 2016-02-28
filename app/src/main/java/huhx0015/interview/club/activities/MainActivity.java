@@ -7,6 +7,8 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.widget.DrawerLayout;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -26,6 +28,7 @@ import huhx0015.interview.club.fragments.ProfileFragment;
 import huhx0015.interview.club.model.Interviewer;
 import huhx0015.interview.club.services.SinchService;
 import huhx0015.interview.club.ui.adapter.DrawerAdapter;
+import huhx0015.interview.club.ui.adapter.InterviewerAdapter;
 
 public class MainActivity extends BaseActivity implements SinchService.StartFailedListener {
 
@@ -35,6 +38,8 @@ public class MainActivity extends BaseActivity implements SinchService.StartFail
     private Context mContext = this;
 
     @Bind(R.id.main_activity_fragment_container) FrameLayout fragmentContainer;
+
+    @Bind(R.id.recycler_view) RecyclerView recyclerView;
 
     /** ACTIVITY LIFECYCLE METHODS _____________________________________________________________ **/
 
@@ -55,6 +60,10 @@ public class MainActivity extends BaseActivity implements SinchService.StartFail
         setUpDrawer();
 
         setUpFragment();
+
+        setUpRecyclerView();
+        // TODO: populate with dummy data
+        setRecyclerList(new ArrayList<Interviewer>());
     }
 
     /*
@@ -157,6 +166,18 @@ public class MainActivity extends BaseActivity implements SinchService.StartFail
 
         // Makes the changes to the fragment manager and transaction objects.
         fragTrans.commitAllowingStateLoss();
+    }
+
+    /** RECYCLERVIEW METHODS ___________________________________________________________________ **/
+
+    private void setUpRecyclerView() {
+        LinearLayoutManager layoutManager = new LinearLayoutManager(this);
+        recyclerView.setLayoutManager(layoutManager);
+    }
+
+    private void setRecyclerList(List<Interviewer> list){
+        InterviewerAdapter recyclerAdapter = new InterviewerAdapter(list, this);
+        recyclerView.setAdapter(recyclerAdapter);
     }
 
 
