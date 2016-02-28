@@ -24,6 +24,7 @@ import butterknife.Bind;
 import butterknife.ButterKnife;
 import huhx0015.interview.club.R;
 import huhx0015.interview.club.constants.FragmentConstants;
+import huhx0015.interview.club.data.DummyData;
 import huhx0015.interview.club.fragments.ProfileFragment;
 import huhx0015.interview.club.model.Interviewer;
 import huhx0015.interview.club.services.SinchService;
@@ -137,21 +138,7 @@ public class MainActivity extends BaseActivity implements SinchService.StartFail
     private void setUpFragment() {
 
         // TODO: Setting dummy interviewer for now.
-        Interviewer dummyInterviewer = new Interviewer();
-        dummyInterviewer.setAvatar(R.drawable.fitness_girl_avatar);
-        dummyInterviewer.setFullName("Jennifer Wayne Doe");
-        dummyInterviewer.setCurrentCompany("Fitness Extreme");
-        dummyInterviewer.setPosition("Head of Engineering");
-
-        List<String> pastCompanies = new ArrayList<>();
-        pastCompanies.add("FitBit");
-        pastCompanies.add("MyFitnessPal");
-        pastCompanies.add("GPOP Labs");
-        pastCompanies.add("Jawbone");
-
-        dummyInterviewer.setPreviousCompanies(pastCompanies);
-
-        addFragment(new ProfileFragment(dummyInterviewer), FragmentConstants.FRAGMENT_PROFILE_TAG);
+        addFragment(new ProfileFragment(DummyData.getRandomInterviewer()), FragmentConstants.FRAGMENT_PROFILE_TAG);
     }
 
     /** FRAGMENT METHODS _______________________________________________________________________ **/

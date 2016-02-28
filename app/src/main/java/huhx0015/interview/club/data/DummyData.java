@@ -2,6 +2,7 @@ package huhx0015.interview.club.data;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 import huhx0015.interview.club.R;
 import huhx0015.interview.club.model.Interviewer;
@@ -78,6 +79,40 @@ public class DummyData {
         }
 
         return interviewerList;
+    }
+
+    public static Interviewer getRandomInterviewer() {
+
+        int randInt;
+        Random randValue = new Random();
+        randInt = randValue.nextInt(11);
+
+        switch (randInt) {
+            case 0:
+                return SALLY_MALIBU();
+            case 1:
+                return NICK_BORGE();
+            case 2:
+                return DORIS_ESTHER();
+            case 3:
+                return DAWN_BELLEPOR();
+            case 4:
+                return JENNIFER_MARLOWE();
+            case 5:
+                return SHIRLEY_CONNOR();
+            case 6:
+                return SONYA_KOSLAVOKA();
+            case 7:
+                return MAC_HAMM();
+            case 8:
+                return TONY_MCDONALD();
+            case 9:
+                return CHARLES_OLSEN();
+            case 10:
+                return JANET_HOWELL();
+            default:
+                return SALLY_MALIBU();
+        }
     }
 
     /** DUMMY INTERVIEWER DATA _________________________________________________________________ **/
