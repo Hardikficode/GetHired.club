@@ -10,7 +10,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 import com.makeramen.roundedimageview.RoundedImageView;
 import com.makeramen.roundedimageview.RoundedTransformationBuilder;
@@ -22,7 +21,6 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 import huhx0015.interview.club.activities.CallScreenActivity;
 import huhx0015.interview.club.activities.MainActivity;
-import huhx0015.interview.club.activities.PlaceCallActivity;
 import huhx0015.interview.club.constants.InterviewConstants;
 import huhx0015.interview.club.model.Company;
 import huhx0015.interview.club.services.SinchService;
@@ -143,29 +141,33 @@ public class ProfileFragment extends Fragment {
 
     @OnClick(R.id.call_fab_button)
     public void performCallButtonClick() {
-        initiateCall(InterviewConstants.SINCH_USERNAME_CALLER);
+        initiateCall(interviewer.getFullName());
     }
 
     /** SINCH METHODS __________________________________________________________________________ **/
 
     private void initiateCall(String userName) {
 
-        if (!activity.getSinchServiceInterface().isStarted()) {
-            activity.getSinchServiceInterface().startClient(userName);
-        } else {
-            openPlaceCallActivity();
+        if (!activity.getSinchServiceInterface().isStarted() && activity.getSinchServiceInterface().getUserName() != InterviewConstants.SINCH_USERNAME_CALLER) {
+            activity.getSinchServiceInterface().stopClient(); // Stops the Sinch Service thread.
+
+            activity.currentSinchUsername = InterviewConstants.SINCH_USERNAME_CALLER;
+
+            activity.startSinchServiceThread(true); // Starts the Sinch Service thread.
         }
 
-//        Call call = activity.getSinchServiceInterface().callUserVideo(userName);
-//        String callId = call.getCallId();
-//
-//        Intent callScreen = new Intent(activity, CallScreenActivity.class);
-//        callScreen.putExtra(SinchService.CALL_ID, callId);
-//        startActivity(callScreen);
+        else {
+            openCallActivity(userName);
+        }
     }
 
-    private void openPlaceCallActivity() {
-        Intent mainActivity = new Intent(activity, PlaceCallActivity.class);
-        startActivity(mainActivity);
+    private void openCallActivity(String username) {
+        Call call = activity.getSinchServiceInterface().callUserVideo(InterviewConstants.SINCH_USERNAME_RECEIVER);
+        String callId = call.getCallId();
+
+        Intent callScreen = new Intent(activity, CallScreenActivity.class);
+        callScreen.putExtra(SinchService.CALL_ID, callId);
+        callScreen.putExtra(InterviewConstants.SINCH_VIDEO_RECEPIENT, username);
+        startActivity(callScreen);
     }
 }

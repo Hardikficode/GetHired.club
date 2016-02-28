@@ -6,4 +6,5 @@ package huhx0015.interview.club.constants;
 public class InterviewConstants {
     public static final String SINCH_USERNAME_CALLER = "Interview_Caller";
     public static final String SINCH_USERNAME_RECEIVER = "Interview_Receiver";
+    public static final String SINCH_VIDEO_RECEPIENT = "Sinch_Video_Recipient";
 }

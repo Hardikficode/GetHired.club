@@ -24,6 +24,7 @@ import java.util.Locale;
 import java.util.Timer;
 import java.util.TimerTask;
 
+import huhx0015.interview.club.constants.InterviewConstants;
 import huhx0015.interview.club.utils.audio.AudioPlayer;
 import huhx0015.interview.club.R;
 import huhx0015.interview.club.services.SinchService;
@@ -39,6 +40,7 @@ public class CallScreenActivity extends BaseActivity {
     private UpdateCallDurationTask mDurationTask;
 
     private String mCallId;
+    private String recepientName;
     private long mCallStart = 0;
     private boolean mAddedListener = false;
     private boolean mVideoViewsAdded = false;
@@ -91,6 +93,7 @@ public class CallScreenActivity extends BaseActivity {
         });
 
         mCallId = getIntent().getStringExtra(SinchService.CALL_ID);
+        recepientName = getIntent().getStringExtra(InterviewConstants.SINCH_VIDEO_RECEPIENT);
         if (savedInstanceState == null) {
             mCallStart = System.currentTimeMillis();
         }
@@ -119,7 +122,7 @@ public class CallScreenActivity extends BaseActivity {
 
         Call call = getSinchServiceInterface().getCall(mCallId);
         if (call != null) {
-            mCallerName.setText(call.getRemoteUserId());
+            mCallerName.setText(recepientName);
             mCallState.setText(call.getState().toString());
             if (call.getState() == CallState.ESTABLISHED) {
                 addVideoViews();

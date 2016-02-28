@@ -58,12 +58,20 @@
                     android:id="@+id/answerButton"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    />
+                android:background="@drawable/call_button_background"
+                android:layout_marginRight="8dp"
+                android:padding="16dp"
+                android:textColor="@android:color/white"
+                android:text="ANSWER CALL" />
             <Button
                     android:id="@+id/declineButton"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_toRightOf="@+id/answerButton"/>
+                    android:layout_toRightOf="@+id/answerButton"
+                android:background="@drawable/hangup_button_background"
+                android:text="REJECT CALL"
+                android:textColor="@android:color/white"
+                android:padding="16dp" />
 
     </RelativeLayout>
 

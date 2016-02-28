@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
@@ -11,11 +12,14 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
+
 import com.makeramen.roundedimageview.RoundedImageView;
 import com.makeramen.roundedimageview.RoundedTransformationBuilder;
 import com.sinch.android.rtc.SinchError;
@@ -26,6 +30,7 @@ import butterknife.Bind;
 import butterknife.ButterKnife;
 import huhx0015.interview.club.R;
 import huhx0015.interview.club.constants.FragmentConstants;
+import huhx0015.interview.club.constants.InterviewConstants;
 import huhx0015.interview.club.data.DummyData;
 import huhx0015.interview.club.fragments.ProfileFragment;
 import huhx0015.interview.club.interfaces.OnDrawerItemSelected;
@@ -34,6 +39,7 @@ import huhx0015.interview.club.model.Interviewer;
 import huhx0015.interview.club.services.SinchService;
 import huhx0015.interview.club.ui.adapter.DrawerAdapter;
 import huhx0015.interview.club.ui.adapter.InterviewerAdapter;
+import huhx0015.interview.club.ui.toast.ToastUtil;
 import huhx0015.interview.club.utils.image.BackgroundUtils;
 import huhx0015.interview.club.utils.user.FilterUtil;
 import huhx0015.interview.club.utils.user.UserUtil;
@@ -41,8 +47,15 @@ import huhx0015.interview.club.utils.user.UserUtil;
 public class MainActivity extends BaseActivity implements OnInterviewerSelected, OnDrawerItemSelected,
         SinchService.StartFailedListener {
 
-    private SharedPreferences mSharedPreferences;
+    private final static String LOG_TAG = MainActivity.class.getSimpleName();
+
     private boolean isFragmentDisplayed = false;
+
+    private Handler sinchServiceHandler = new Handler(); // Handler for the thread.
+
+    public String currentSinchUsername = InterviewConstants.SINCH_USERNAME_RECEIVER;
+
+    private SharedPreferences mSharedPreferences;
 
     @Bind(R.id.drawer_layout) DrawerLayout mDrawerLayout;
     @Bind(R.id.main_activity_fragment_container) FrameLayout fragmentContainer;
@@ -70,6 +83,8 @@ public class MainActivity extends BaseActivity implements OnInterviewerSelected,
         setUpDrawer();
         setUpRecyclerView();
         setRecyclerList(DummyData.getInterviewerSet(0));
+
+        startSinchServiceThread(true); // Initializes the Sinch Service thread.
     }
 
     /** LAYOUT METHODS _________________________________________________________________________ **/
@@ -193,6 +208,12 @@ public class MainActivity extends BaseActivity implements OnInterviewerSelected,
 
     /** SINCH SERVICE METHODS __________________________________________________________________ **/
 
+    private void initializeSinchService() {
+        if (getSinchServiceInterface() != null && !getSinchServiceInterface().isStarted()) {
+            getSinchServiceInterface().startClient(InterviewConstants.SINCH_USERNAME_RECEIVER);
+        }
+    }
+
     @Override
     protected void onServiceConnected() {
         getSinchServiceInterface().setStartListener(this);
@@ -203,6 +224,35 @@ public class MainActivity extends BaseActivity implements OnInterviewerSelected,
 
     @Override
     public void onStarted() {}
+
+    /** THREAD METHODS _________________________________________________________________________ **/
+
+    public void startSinchServiceThread(boolean isStart) {
+        if (isStart) {
+            Log.d(LOG_TAG, "startSinchServiceThread(): Sinch service thread started.");
+            ToastUtil.toastyPopUp("Initializing Sinch Service...", this);
+            sinchServiceHandler.postDelayed(sinchServiceThread, 1000); // Begins thread callbacks.
+        } else {
+            Log.d(LOG_TAG, "startSinchServiceThread(): Sinch service thread stopped.");
+            sinchServiceHandler.removeCallbacks(sinchServiceThread); // Removes thread callbacks.
+        }
+    }
+
+    private Runnable sinchServiceThread = new Runnable() {
+
+        public void run() {
+
+            Log.d(LOG_TAG, "sinchServiceThread(): Thread running...");
+
+            if (getSinchServiceInterface() != null && !getSinchServiceInterface().isStarted()) {
+                getSinchServiceInterface().startClient(currentSinchUsername);
+                ToastUtil.toastyPopUp("Sinch Service is ready", MainActivity.this);
+                sinchServiceHandler.removeCallbacks(sinchServiceThread);
+            } else {
+                sinchServiceHandler.postDelayed(this, 1000); // Thread is run again in 1000 ms.
+            }
+        }
+    };
 
     /** INTERFACE METHODS ______________________________________________________________________ **/
 
@@ -217,4 +267,6 @@ public class MainActivity extends BaseActivity implements OnInterviewerSelected,
         setUpRecyclerView();
         setRecyclerList(filteredInterviewList);
     }
+
+
 }
