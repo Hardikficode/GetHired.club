@@ -4,6 +4,7 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/Interview.club.iml" filepath="$PROJECT_DIR$/Interview.club.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/hackathon_launch2016.iml" filepath="$PROJECT_DIR$/hackathon_launch2016.iml" />
       <module fileurl="file://$PROJECT_DIR$/sinch-rtc-sample-calling/sinch-rtc-sample-calling.iml" filepath="$PROJECT_DIR$/sinch-rtc-sample-calling/sinch-rtc-sample-calling.iml" />
       <module fileurl="file://$PROJECT_DIR$/sinch-rtc-sample-messaging/sinch-rtc-sample-messaging.iml" filepath="$PROJECT_DIR$/sinch-rtc-sample-messaging/sinch-rtc-sample-messaging.iml" />
       <module fileurl="file://$PROJECT_DIR$/sinch-rtc-sample-pstn/sinch-rtc-sample-pstn.iml" filepath="$PROJECT_DIR$/sinch-rtc-sample-pstn/sinch-rtc-sample-pstn.iml" />
