@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Random;
 
 import huhx0015.interview.club.R;
+import huhx0015.interview.club.model.Company;
 import huhx0015.interview.club.model.Interviewer;
 
 /**
@@ -122,8 +123,14 @@ public class DummyData {
         Interviewer interviewer = new Interviewer();
         interviewer.setAvatar(R.drawable.blonde_woman_interviewer);
         interviewer.setFullName("Sally Malibu");
-        interviewer.setCurrentCompany("Sunset Technologies");
+        interviewer.setCurrentCompany(new Company("gusto"));
         interviewer.setPosition("Junior iOS Developer");
+
+        List<Company> previousCompanies = new ArrayList<>();
+        previousCompanies.add(new Company("google"));
+        previousCompanies.add(new Company("dropbox"));
+        previousCompanies.add(new Company("gusto"));
+        interviewer.setPreviousCompanies(previousCompanies);
 
         return interviewer;
     }
@@ -133,8 +140,14 @@ public class DummyData {
         Interviewer interviewer = new Interviewer();
         interviewer.setAvatar(R.drawable.contemplating_man_interviewer);
         interviewer.setFullName("Nick Borge");
-        interviewer.setCurrentCompany("Uber");
+        interviewer.setCurrentCompany(new Company("dropbox"));
         interviewer.setPosition("Android Developer");
+
+        List<Company> previousCompanies = new ArrayList<>();
+        previousCompanies.add(new Company("google"));
+        previousCompanies.add(new Company("dropbox"));
+        previousCompanies.add(new Company("gusto"));
+        interviewer.setPreviousCompanies(previousCompanies);
 
         return interviewer;
     }
@@ -144,8 +157,14 @@ public class DummyData {
         Interviewer interviewer = new Interviewer();
         interviewer.setAvatar(R.drawable.doris_lady_interviewer);
         interviewer.setFullName("Doris Esther");
-        interviewer.setCurrentCompany("Microsoft");
+        interviewer.setCurrentCompany(new Company("google"));
         interviewer.setPosition("Senior Back-End Engineer");
+
+        List<Company> previousCompanies = new ArrayList<>();
+        previousCompanies.add(new Company("google"));
+        previousCompanies.add(new Company("dropbox"));
+        previousCompanies.add(new Company("gusto"));
+        interviewer.setPreviousCompanies(previousCompanies);
 
         return interviewer;
     }
@@ -155,8 +174,14 @@ public class DummyData {
         Interviewer interviewer = new Interviewer();
         interviewer.setAvatar(R.drawable.executive_woman_interviewer);
         interviewer.setFullName("Dawn Bellepor");
-        interviewer.setCurrentCompany("Esri");
+        interviewer.setCurrentCompany(new Company("google"));
         interviewer.setPosition("Senior Front-End Engineer");
+
+        List<Company> previousCompanies = new ArrayList<>();
+        previousCompanies.add(new Company("google"));
+        previousCompanies.add(new Company("dropbox"));
+        previousCompanies.add(new Company("gusto"));
+        interviewer.setPreviousCompanies(previousCompanies);
 
         return interviewer;
     }
@@ -166,8 +191,14 @@ public class DummyData {
         Interviewer interviewer = new Interviewer();
         interviewer.setAvatar(R.drawable.fitness_girl_avatar);
         interviewer.setFullName("Jennifer Marlowe");
-        interviewer.setCurrentCompany("Fitness Buddies");
+        interviewer.setCurrentCompany(new Company("gusto"));
         interviewer.setPosition("Junior iOS Developer");
+
+        List<Company> previousCompanies = new ArrayList<>();
+        previousCompanies.add(new Company("google"));
+        previousCompanies.add(new Company("dropbox"));
+        previousCompanies.add(new Company("gusto"));
+        interviewer.setPreviousCompanies(previousCompanies);
 
         return interviewer;
     }
@@ -177,8 +208,14 @@ public class DummyData {
         Interviewer interviewer = new Interviewer();
         interviewer.setAvatar(R.drawable.happy_man_interviewer);
         interviewer.setFullName("Mac Hamm");
-        interviewer.setCurrentCompany("Lyft");
+        interviewer.setCurrentCompany(new Company("dropbox"));
         interviewer.setPosition("Senior Android Engineer");
+
+        List<Company> previousCompanies = new ArrayList<>();
+        previousCompanies.add(new Company("google"));
+        previousCompanies.add(new Company("dropbox"));
+        previousCompanies.add(new Company("gusto"));
+        interviewer.setPreviousCompanies(previousCompanies);
 
         return interviewer;
     }
@@ -188,8 +225,14 @@ public class DummyData {
         Interviewer interviewer = new Interviewer();
         interviewer.setAvatar(R.drawable.happy_woman_interviewer);
         interviewer.setFullName("Shirley Conner");
-        interviewer.setCurrentCompany("Tinder");
+        interviewer.setCurrentCompany(new Company("dropbox"));
         interviewer.setPosition("Junior iOS Developer");
+
+        List<Company> previousCompanies = new ArrayList<>();
+        previousCompanies.add(new Company("google"));
+        previousCompanies.add(new Company("dropbox"));
+        previousCompanies.add(new Company("gusto"));
+        interviewer.setPreviousCompanies(previousCompanies);
 
         return interviewer;
     }
@@ -199,8 +242,14 @@ public class DummyData {
         Interviewer interviewer = new Interviewer();
         interviewer.setAvatar(R.drawable.mercenary_woman_interviewer);
         interviewer.setFullName("Sonya Koslavoka");
-        interviewer.setCurrentCompany("ArmyGear");
+        interviewer.setCurrentCompany(new Company("gusto"));
         interviewer.setPosition("Junior Back-end Engineer");
+
+        List<Company> previousCompanies = new ArrayList<>();
+        previousCompanies.add(new Company("google"));
+        previousCompanies.add(new Company("dropbox"));
+        previousCompanies.add(new Company("gusto"));
+        interviewer.setPreviousCompanies(previousCompanies);
 
         return interviewer;
     }
@@ -210,8 +259,14 @@ public class DummyData {
         Interviewer interviewer = new Interviewer();
         interviewer.setAvatar(R.drawable.silly_man_interviewer);
         interviewer.setFullName("Tony McDonald");
-        interviewer.setCurrentCompany("Google");
+        interviewer.setCurrentCompany(new Company("google"));
         interviewer.setPosition("Junior Front-end Engineer");
+
+        List<Company> previousCompanies = new ArrayList<>();
+        previousCompanies.add(new Company("google"));
+        previousCompanies.add(new Company("dropbox"));
+        previousCompanies.add(new Company("gusto"));
+        interviewer.setPreviousCompanies(previousCompanies);
 
         return interviewer;
     }
@@ -221,8 +276,14 @@ public class DummyData {
         Interviewer interviewer = new Interviewer();
         interviewer.setAvatar(R.drawable.speaker_man_interviewer);
         interviewer.setFullName("Charles Olsen");
-        interviewer.setCurrentCompany("Oracle");
+        interviewer.setCurrentCompany(new Company("google"));
         interviewer.setPosition("Senior Back-end Engineer");
+
+        List<Company> previousCompanies = new ArrayList<>();
+        previousCompanies.add(new Company("google"));
+        previousCompanies.add(new Company("dropbox"));
+        previousCompanies.add(new Company("gusto"));
+        interviewer.setPreviousCompanies(previousCompanies);
 
         return interviewer;
     }
@@ -232,8 +293,14 @@ public class DummyData {
         Interviewer interviewer = new Interviewer();
         interviewer.setAvatar(R.drawable.woman_phone_interviewer);
         interviewer.setFullName("Janet Howell");
-        interviewer.setCurrentCompany("Soda'n Candy");
+        interviewer.setCurrentCompany(new Company("gusto"));
         interviewer.setPosition("Junior Android Developer");
+
+        List<Company> previousCompanies = new ArrayList<>();
+        previousCompanies.add(new Company("google"));
+        previousCompanies.add(new Company("dropbox"));
+        previousCompanies.add(new Company("gusto"));
+        interviewer.setPreviousCompanies(previousCompanies);
 
         return interviewer;
     }

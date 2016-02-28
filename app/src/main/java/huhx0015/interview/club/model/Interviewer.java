@@ -12,24 +12,24 @@ public class Interviewer {
     /** CLASS VARIABLES ________________________________________________________________________ **/
 
     private String fullName;
-    private String currentCompany;
     private String position;
 
     private int avatar;
 
-    private List<String> previousCompanies;
+    private Company currentCompany;
+
+    private List<Company> previousCompanies;
 
     /** CONSTRUCTOR METHODS ____________________________________________________________________ **/
 
     public Interviewer() {
         this.fullName = "";
-        this.currentCompany = "";
         this.position = "";
         this.avatar = R.mipmap.ic_launcher;
         this.previousCompanies = new ArrayList<>();
     }
 
-    public Interviewer(String name, String company, String position, int avatar, List<String> previousCompanies) {
+    public Interviewer(String name, Company company, String position, int avatar, List<Company> previousCompanies) {
         this.fullName = name;
         this.currentCompany = company;
         this.position = position;
@@ -47,11 +47,11 @@ public class Interviewer {
         this.fullName = fullName;
     }
 
-    public String getCurrentCompany() {
+    public Company getCurrentCompany() {
         return currentCompany;
     }
 
-    public void setCurrentCompany(String currentCompany) {
+    public void setCurrentCompany(Company currentCompany) {
         this.currentCompany = currentCompany;
     }
 
@@ -63,11 +63,11 @@ public class Interviewer {
         this.position = position;
     }
 
-    public List<String> getPreviousCompanies() {
+    public List<Company> getPreviousCompanies() {
         return previousCompanies;
     }
 
-    public void setPreviousCompanies(List<String> previousCompanies) {
+    public void setPreviousCompanies(List<Company> previousCompanies) {
         this.previousCompanies = previousCompanies;
     }
 

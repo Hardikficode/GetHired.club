@@ -67,7 +67,8 @@ public class InterviewerAdapter extends RecyclerView.Adapter<InterviewerAdapter.
 
         // Sets the TextView objects.
         holder.intervieweeNameText.setText(interviewerList.get(position).getFullName());
-        holder.intervieweeCompanyText.setText(interviewerList.get(position).getCurrentCompany());
+        holder.intervieweeCompanyText.setText(interviewerList.get(position).getCurrentCompany().getCompanyName());
+        holder.intervieweeCompanyText.setCompoundDrawablesWithIntrinsicBounds(interviewerList.get(position).getCurrentCompany().getCompanyLogoId(), 0, 0, 0);
         holder.intervieweePositionText.setText(interviewerList.get(position).getPosition());
 
         int avatarImage = interviewerList.get(position).getAvatar();

@@ -40,4 +40,30 @@ public class Company {
                 return "Google";
         }
     }
+
+    /** GET / SET METHODS ______________________________________________________________________ **/
+
+    public String getCompanyName() {
+        return companyName;
+    }
+
+    public void setCompanyName(String companyName) {
+        this.companyName = companyName;
+    }
+
+    public String getCompanyNameKey() {
+        return companyNameKey;
+    }
+
+    public void setCompanyNameKey(String companyNameKey) {
+        this.companyNameKey = companyNameKey;
+    }
+
+    public int getCompanyLogoId() {
+        return companyLogoId;
+    }
+
+    public void setCompanyLogoId(int companyLogoId) {
+        this.companyLogoId = companyLogoId;
+    }
 }

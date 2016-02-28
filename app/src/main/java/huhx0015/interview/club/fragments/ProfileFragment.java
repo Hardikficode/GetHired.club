@@ -23,6 +23,7 @@ import butterknife.OnClick;
 import huhx0015.interview.club.activities.CallScreenActivity;
 import huhx0015.interview.club.activities.MainActivity;
 import huhx0015.interview.club.constants.InterviewConstants;
+import huhx0015.interview.club.model.Company;
 import huhx0015.interview.club.services.SinchService;
 import huhx0015.interview.club.utils.image.BackgroundUtils;
 import huhx0015.interview.club.R;
@@ -98,15 +99,16 @@ public class ProfileFragment extends Fragment {
 
         if (interviewer != null) {
             profileName.setText(interviewer.getFullName());
-            profileCompany.setText(interviewer.getCurrentCompany());
+            profileCompany.setText(interviewer.getCurrentCompany().getCompanyName());
+            profileCompany.setCompoundDrawablesWithIntrinsicBounds(interviewer.getCurrentCompany().getCompanyLogoId(), 0, 0, 0);
             profilePosition.setText(interviewer.getPosition());
 
             String pastCompanyValues = "Not Available";
             if (interviewer.getPreviousCompanies().size() > 0) {
 
                 pastCompanyValues = "";
-                for (String company : interviewer.getPreviousCompanies()) {
-                    pastCompanyValues = pastCompanyValues + company + "\n";
+                for (Company company : interviewer.getPreviousCompanies()) {
+                    pastCompanyValues = pastCompanyValues + company.getCompanyName() + "\n";
                 }
 
             } else { pastCompaniesValueText.setText(pastCompanyValues); }
