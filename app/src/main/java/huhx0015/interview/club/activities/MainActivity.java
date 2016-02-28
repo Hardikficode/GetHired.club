@@ -13,6 +13,8 @@ import android.view.MenuItem;
 import android.widget.FrameLayout;
 import android.widget.ListView;
 
+import com.sinch.android.rtc.SinchError;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -22,9 +24,10 @@ import huhx0015.interview.club.R;
 import huhx0015.interview.club.constants.FragmentConstants;
 import huhx0015.interview.club.fragments.ProfileFragment;
 import huhx0015.interview.club.model.Interviewer;
+import huhx0015.interview.club.services.SinchService;
 import huhx0015.interview.club.ui.adapter.DrawerAdapter;
 
-public class MainActivity extends BaseActivity {
+public class MainActivity extends BaseActivity implements SinchService.StartFailedListener {
 
     private DrawerLayout mDrawerLayout;
     private ListView mDrawerList;
@@ -138,5 +141,19 @@ public class MainActivity extends BaseActivity {
 
         // Makes the changes to the fragment manager and transaction objects.
         fragTrans.commitAllowingStateLoss();
+    }
+
+
+    @Override
+    protected void onServiceConnected() {
+        getSinchServiceInterface().setStartListener(this);
+    }
+
+    @Override
+    public void onStartFailed(SinchError error) {}
+
+    @Override
+    public void onStarted() {
+
     }
 }
