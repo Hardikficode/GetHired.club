@@ -40,7 +40,7 @@ public class ProfileFragment extends Fragment {
     private MainActivity activity;
 
     @Bind(R.id.profile_cover_image) ImageView profileCoverImage;
-    @Bind(R.id.profile_text_container) LinearLayout profileTextContainer;
+    @Bind(R.id.profile_text_sub_container_background) ImageView profileContainerBackground;
     @Bind(R.id.profile_image_avatar) RoundedImageView profileAvatar;
     @Bind(R.id.profile_name_text) TextView profileName;
     @Bind(R.id.profile_company_text) TextView profileCompany;
@@ -77,6 +77,7 @@ public class ProfileFragment extends Fragment {
     @Override
     public void onDestroyView() {
         super.onDestroyView();
+        ButterKnife.unbind(this); // Sets all injected views to null.
     }
 
     /** LAYOUT METHODS _________________________________________________________________________ **/
@@ -112,7 +113,7 @@ public class ProfileFragment extends Fragment {
 
             // Sets the rounded image view transformation for the avatar image.
             Transformation transformation = new RoundedTransformationBuilder()
-                    .borderColor(Color.BLACK)
+                    .borderColor(Color.WHITE)
                     .borderWidthDp(1)
                     .cornerRadiusDp(30)
                     .oval(true)
@@ -125,7 +126,7 @@ public class ProfileFragment extends Fragment {
                     .into(profileAvatar);
         }
 
-        profileTextContainer.setAlpha(0.4f);
+        profileContainerBackground.setAlpha(0.4f);
     }
 
     private void initTextAttributes() {
