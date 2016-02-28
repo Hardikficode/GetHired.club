@@ -1,4 +1,4 @@
-package huhx0015.interview.club;
+package huhx0015.interview.club.utils.audio;
 
 import android.content.Context;
 import android.content.res.AssetFileDescriptor;
@@ -11,6 +11,8 @@ import android.util.Log;
 
 import java.io.FileInputStream;
 import java.io.IOException;
+
+import huhx0015.interview.club.R;
 
 public class AudioPlayer {
 

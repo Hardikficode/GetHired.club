@@ -1,4 +1,4 @@
-package huhx0015.interview.club;
+package huhx0015.interview.club.activities;
 
 import com.sinch.android.rtc.PushPair;
 import com.sinch.android.rtc.calling.Call;
@@ -15,7 +15,8 @@ import android.widget.TextView;
 
 import java.util.List;
 
-import huhx0015.interview.club.activities.BaseActivity;
+import huhx0015.interview.club.utils.audio.AudioPlayer;
+import huhx0015.interview.club.R;
 import huhx0015.interview.club.services.SinchService;
 
 public class IncomingCallScreenActivity extends BaseActivity {

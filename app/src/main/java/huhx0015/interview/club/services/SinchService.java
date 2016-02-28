@@ -17,7 +17,7 @@ import android.os.Binder;
 import android.os.IBinder;
 import android.util.Log;
 
-import huhx0015.interview.club.IncomingCallScreenActivity;
+import huhx0015.interview.club.activities.IncomingCallScreenActivity;
 import huhx0015.interview.club.R;
 
 public class SinchService extends Service {

@@ -1,6 +1,8 @@
-package huhx0015.interview.club;
+package huhx0015.interview.club.utils.image;
 
 import java.util.Random;
+
+import huhx0015.interview.club.R;
 
 /**
  * Created by Michael Yoon Huh on 2/27/2016.

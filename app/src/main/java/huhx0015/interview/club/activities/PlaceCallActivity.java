@@ -12,7 +12,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 import com.sinch.android.rtc.calling.Call;
-import huhx0015.interview.club.CallScreenActivity;
+
 import huhx0015.interview.club.R;
 import huhx0015.interview.club.services.SinchService;
 

@@ -13,7 +13,7 @@ import android.widget.TextView;
 import com.squareup.picasso.Picasso;
 import butterknife.Bind;
 import butterknife.ButterKnife;
-import huhx0015.interview.club.BackgroundUtils;
+import huhx0015.interview.club.utils.image.BackgroundUtils;
 import huhx0015.interview.club.R;
 import huhx0015.interview.club.model.Interviewer;
 
