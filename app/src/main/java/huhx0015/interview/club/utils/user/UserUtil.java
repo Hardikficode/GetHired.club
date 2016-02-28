@@ -12,9 +12,12 @@ public class UserUtil {
     // getDeviceOwnerName(): Returns this device's owner name.
     public static String getDeviceOwnerName(Activity activity) {
 
+        String ownerName = "Chris Komarin";
+
         Cursor c = activity.getApplication().getContentResolver().query(ContactsContract.Profile.CONTENT_URI, null, null, null, null);
         c.moveToFirst();
-        String ownerName = (c.getString(c.getColumnIndex("display_name")));
+
+        if (c.getCount() > 0) { ownerName = c.getString(c.getColumnIndex("display_name")); }
         c.close();
 
         return ownerName;

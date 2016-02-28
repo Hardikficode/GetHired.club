@@ -100,7 +100,7 @@ public class ProfileFragment extends Fragment {
         if (interviewer != null) {
             profileName.setText(interviewer.getFullName());
             profileCompany.setText(interviewer.getCurrentCompany().getCompanyName());
-            profileCompany.setCompoundDrawablesWithIntrinsicBounds(interviewer.getCurrentCompany().getCompanyLogoId(), 0, 0, 0);
+            //profileCompany.setCompoundDrawablesWithIntrinsicBounds(interviewer.getCurrentCompany().getCompanyLogoId(), 0, 0, 0);
             profilePosition.setText(interviewer.getPosition());
 
             String pastCompanyValues = "Not Available";
@@ -111,7 +111,9 @@ public class ProfileFragment extends Fragment {
                     pastCompanyValues = pastCompanyValues + company.getCompanyName() + "\n";
                 }
 
-            } else { pastCompaniesValueText.setText(pastCompanyValues); }
+            }
+
+            pastCompaniesValueText.setText(pastCompanyValues);
 
             // Sets the rounded image view transformation for the avatar image.
             Transformation transformation = new RoundedTransformationBuilder()
