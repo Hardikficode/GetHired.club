@@ -17,17 +17,6 @@
             <option value="$PROJECT_DIR$/sinch-rtc-sample-video" />
           </set>
         </option>
-        <option name="myModules">
-          <set>
-            <option value="$PROJECT_DIR$" />
-            <option value="$PROJECT_DIR$/app" />
-            <option value="$PROJECT_DIR$/sinch-rtc-sample-calling" />
-            <option value="$PROJECT_DIR$/sinch-rtc-sample-messaging" />
-            <option value="$PROJECT_DIR$/sinch-rtc-sample-pstn" />
-            <option value="$PROJECT_DIR$/sinch-rtc-sample-push" />
-            <option value="$PROJECT_DIR$/sinch-rtc-sample-video" />
-          </set>
-        </option>
       </GradleProjectSettings>
     </option>
   </component>

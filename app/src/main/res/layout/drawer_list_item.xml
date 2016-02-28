@@ -10,6 +10,7 @@
         android:id="@+id/drawer_item_title"/>
 
     <Switch
+        android:id="@+id/drawer_item_switch"
         android:layout_width="0dp"
         android:layout_height="match_parent"
         android:layout_weight="1"
