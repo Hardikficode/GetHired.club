@@ -28,7 +28,8 @@
                 android:layout_height="256dp"
                 android:id="@+id/profile_cover_image"
                 android:scaleType="centerCrop"
-                android:src="@drawable/target_field_background" />
+                android:src="@drawable/target_field_background"
+                android:background="@android:color/darker_gray" />
 
             <LinearLayout
                 android:orientation="vertical"

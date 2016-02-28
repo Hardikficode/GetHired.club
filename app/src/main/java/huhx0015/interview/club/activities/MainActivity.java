@@ -97,7 +97,7 @@ public class MainActivity extends BaseActivity implements OnInterviewerSelected,
 
         // Loads the avatar image into the RoundedImageView.
         Picasso.with(this)
-                .load(DummyData.getRandomInterviewer().getAvatar())
+                .load(R.drawable.default_avatar)
                 .transform(transformation)
                 .into(drawerAvatarImage);
 
