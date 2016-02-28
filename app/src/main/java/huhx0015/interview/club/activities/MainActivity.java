@@ -50,13 +50,20 @@ public class MainActivity extends BaseActivity {
         mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
         mDrawerList = (ListView) findViewById(R.id.drawer_list_view);
 
-        String[] DRAWER_ITEM_TITLES = new String[]{"Early Startup", "Funded Startup", "Corporation"};
+        String[] drawerTitles = new String[]{"Early Startup", "Funded Startup", "Corporation"};
+        String[] prefCompanyKeys = new String[]{
+                getString(R.string.pref_key_early_start_up),
+                getString(R.string.pref_key_funded_start_up),
+                getString(R.string.pref_key_corporation)};
+
 
         DrawerAdapter adapter = new DrawerAdapter(this,
-                R.layout.drawer_list_item, R.id.drawer_item_title, DRAWER_ITEM_TITLES);
+                R.layout.drawer_list_item, R.id.drawer_item_title, drawerTitles, prefCompanyKeys);
         mDrawerList.setAdapter(adapter);
 
     }
+
+
 
     /** ACTIVITY OVERRIDE METHODS ______________________________________________________________ **/
 

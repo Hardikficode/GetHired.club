@@ -23,23 +23,26 @@ public class DrawerAdapter extends ArrayAdapter{
     private TextView mTextView;
     private Switch mSwitch;
     private String[] mTitles;
-    private HashMap<Integer, String> DRAWER_IEM_MAP_TO_PREF_KEY = new HashMap<>();
+    private String[] mPrefKeys;
+    private HashMap<Integer, String> drawerItemToKeyMap = new HashMap<>();
     private SharedPreferences mSharedPreferences;
     private SharedPreferences.Editor mSharedPreferencesEditor;
 
-    public DrawerAdapter(Context context, int resource, int textViewResourceId, String[] titles) {
+    public DrawerAdapter(Context context, int resource, int textViewResourceId,
+                         String[] titles, String[] prefKeys) {
         super(context, resource, textViewResourceId, titles);
         mContext = context;
         mTitles = titles;
+        mPrefKeys = prefKeys;
         mSharedPreferences = context.getSharedPreferences(
                 context.getString(R.string.preference_file_key),
                 Context.MODE_PRIVATE);
         mSharedPreferencesEditor = mSharedPreferences.edit();
 
         // map the index of drawer list item to its corresponding preference key
-        DRAWER_IEM_MAP_TO_PREF_KEY.put(0, mContext.getString(R.string.pref_key_early_start_up));
-        DRAWER_IEM_MAP_TO_PREF_KEY.put(1, mContext.getString(R.string.pref_key_funded_start_up));
-        DRAWER_IEM_MAP_TO_PREF_KEY.put(2, mContext.getString(R.string.pref_key_corporation));
+        for(int i = 0; i < mTitles.length; i++){
+            drawerItemToKeyMap.put(i, mPrefKeys[i]);
+        }
     }
 
     @Override
@@ -55,7 +58,7 @@ public class DrawerAdapter extends ArrayAdapter{
         mSwitch.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-                String prefKey = DRAWER_IEM_MAP_TO_PREF_KEY.get(position);
+                String prefKey = mPrefKeys[position];
 
                 boolean oldVal = mSharedPreferences.getBoolean(prefKey, false);
                 mSharedPreferencesEditor.putBoolean(prefKey, !oldVal);
