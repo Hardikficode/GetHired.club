@@ -28,6 +28,7 @@ import huhx0015.interview.club.R;
 import huhx0015.interview.club.constants.FragmentConstants;
 import huhx0015.interview.club.data.DummyData;
 import huhx0015.interview.club.fragments.ProfileFragment;
+import huhx0015.interview.club.interfaces.OnDrawerItemSelected;
 import huhx0015.interview.club.interfaces.OnInterviewerSelected;
 import huhx0015.interview.club.model.Interviewer;
 import huhx0015.interview.club.services.SinchService;
@@ -36,10 +37,10 @@ import huhx0015.interview.club.ui.adapter.InterviewerAdapter;
 import huhx0015.interview.club.utils.image.BackgroundUtils;
 import huhx0015.interview.club.utils.user.UserUtil;
 
-public class MainActivity extends BaseActivity implements OnInterviewerSelected, SinchService.StartFailedListener {
+public class MainActivity extends BaseActivity implements OnInterviewerSelected, OnDrawerItemSelected,
+        SinchService.StartFailedListener {
 
     private SharedPreferences mSharedPreferences;
-    private Context mContext = this;
     private boolean isFragmentDisplayed = false;
 
     @Bind(R.id.drawer_layout) DrawerLayout mDrawerLayout;
@@ -83,6 +84,7 @@ public class MainActivity extends BaseActivity implements OnInterviewerSelected,
 
         // Sets the owner name.
         drawerHeaderName.setText(UserUtil.getDeviceOwnerName(this));
+        drawerHeaderName.setShadowLayer(4, 2, 2, Color.BLACK);
 
         // Sets the rounded image view transformation for the avatar image.
         Transformation transformation = new RoundedTransformationBuilder()
@@ -206,5 +208,28 @@ public class MainActivity extends BaseActivity implements OnInterviewerSelected,
     @Override
     public void interviewerSelected(Interviewer interviewer) {
         addFragment(new ProfileFragment(interviewer), FragmentConstants.FRAGMENT_PROFILE_TAG);
+    }
+
+    @Override
+    public void drawerItemClicked(String key) {
+
+        if (mSharedPreferences != null) {
+
+            if (key.equals(getString(R.string.pref_key_early_start_up))) {
+
+            } else if (key.equals(getString(R.string.pref_key_funded_start_up))) {
+
+            } else if (key.equals(getString(R.string.pref_key_corporation))) {
+
+            } else if (key.equals(getString(R.string.pref_key_front_end))) {
+
+            } else if (key.equals(getString(R.string.pref_key_back_end))) {
+
+            } else if (key.equals(getString(R.string.pref_key_android))) {
+
+            } else if (key.equals(getString(R.string.pref_key_ios))) {
+
+            }
+        }
     }
 }

@@ -13,13 +13,17 @@ import android.widget.Toast;
 import java.util.HashMap;
 
 import huhx0015.interview.club.R;
+import huhx0015.interview.club.activities.MainActivity;
+import huhx0015.interview.club.interfaces.OnDrawerItemSelected;
+import huhx0015.interview.club.interfaces.OnInterviewerSelected;
+import huhx0015.interview.club.model.Interviewer;
 
 public class DrawerAdapter extends ArrayAdapter{
 
     private static final String LOG_TAG = DrawerAdapter.class.getSimpleName();
     private static final boolean DEBUG = true;
 
-    private Context mContext;
+    private MainActivity activity;
     private TextView mTextView;
     private Switch mSwitch;
     private String[] mTitles;
@@ -28,14 +32,14 @@ public class DrawerAdapter extends ArrayAdapter{
     private SharedPreferences mSharedPreferences;
     private SharedPreferences.Editor mSharedPreferencesEditor;
 
-    public DrawerAdapter(Context context, int resource, int textViewResourceId,
+    public DrawerAdapter(MainActivity activity, int resource, int textViewResourceId,
                          String[] titles, String[] prefKeys) {
-        super(context, resource, textViewResourceId, titles);
-        mContext = context;
+        super(activity, resource, textViewResourceId, titles);
+        this.activity = activity;
         mTitles = titles;
         mPrefKeys = prefKeys;
-        mSharedPreferences = context.getSharedPreferences(
-                context.getString(R.string.preference_file_key),
+        mSharedPreferences = activity.getSharedPreferences(
+                activity.getString(R.string.preference_file_key),
                 Context.MODE_PRIVATE);
         mSharedPreferencesEditor = mSharedPreferences.edit();
 
@@ -47,9 +51,7 @@ public class DrawerAdapter extends ArrayAdapter{
 
     @Override
     public View getView(final int position, View convertView, ViewGroup parent) {
-        //if (convertView == null) {
-            convertView = LayoutInflater.from(getContext()).inflate(R.layout.drawer_list_item, parent, false);
-        //}
+        convertView = LayoutInflater.from(getContext()).inflate(R.layout.drawer_list_item, parent, false);
 
         mTextView = (TextView) convertView.findViewById(R.id.drawer_item_title);
         mTextView.setText(mTitles[position]);
@@ -64,17 +66,27 @@ public class DrawerAdapter extends ArrayAdapter{
                 mSharedPreferencesEditor.putBoolean(prefKey, !oldVal);
                 mSharedPreferencesEditor.commit();
 
-                if (DEBUG) {
-                    Toast toast = Toast.makeText(mContext,
-                            "clicked on position " + position + ", " + prefKey +
-                                    " old: " + oldVal,
-                            Toast.LENGTH_SHORT);
-                    toast.show();
-                }
+                // Signals MainActivity that a drawer item was clicked.
+                drawerItemClicked(mPrefKeys[position]);
+
+//                if (DEBUG) {
+//                    Toast toast = Toast.makeText(activity,
+//                            "clicked on position " + position + ", " + prefKey +
+//                                    " old: " + oldVal,
+//                            Toast.LENGTH_SHORT);
+//                    toast.show();
+//                }
 
             }
         });
 
         return convertView;
+    }
+
+    /** INTERFACE METHODS ______________________________________________________________________ **/
+
+    private void drawerItemClicked(String key) {
+        try { ((OnDrawerItemSelected) activity).drawerItemClicked(key); }
+        catch (ClassCastException cce) {} // Catch for class cast exception errors.
     }
 }
