@@ -1,7 +1,7 @@
 Interview.club | LAUNCH Hackathon 2016
 ============
 
-Team: Michael Huh, Xiaofan, Missy Bur
+Team: Michael Huh, Xiaofan Fang, Missy Bur
 
 Platform: Android, Web
 
