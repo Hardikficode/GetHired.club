@@ -3,7 +3,6 @@ package huhx0015.interview.club.data;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
-
 import huhx0015.interview.club.R;
 import huhx0015.interview.club.model.Company;
 import huhx0015.interview.club.model.Interviewer;
@@ -123,13 +122,14 @@ public class DummyData {
         Interviewer interviewer = new Interviewer();
         interviewer.setAvatar(R.drawable.blonde_woman_interviewer);
         interviewer.setFullName("Sally Malibu");
-        interviewer.setCurrentCompany(new Company("gusto"));
+        interviewer.setCurrentCompany(new Company("gusto", 0));
         interviewer.setPosition("Junior iOS Developer");
+        interviewer.setPositionType(2);
 
         List<Company> previousCompanies = new ArrayList<>();
-        previousCompanies.add(new Company("google"));
-        previousCompanies.add(new Company("dropbox"));
-        previousCompanies.add(new Company("gusto"));
+        previousCompanies.add(new Company("google", 2));
+        previousCompanies.add(new Company("dropbox", 1));
+        previousCompanies.add(new Company("gusto", 0));
         interviewer.setPreviousCompanies(previousCompanies);
 
         return interviewer;
@@ -140,13 +140,14 @@ public class DummyData {
         Interviewer interviewer = new Interviewer();
         interviewer.setAvatar(R.drawable.contemplating_man_interviewer);
         interviewer.setFullName("Nick Borge");
-        interviewer.setCurrentCompany(new Company("dropbox"));
+        interviewer.setCurrentCompany(new Company("dropbox", 1));
         interviewer.setPosition("Android Developer");
+        interviewer.setPositionType(3);
 
         List<Company> previousCompanies = new ArrayList<>();
-        previousCompanies.add(new Company("google"));
-        previousCompanies.add(new Company("dropbox"));
-        previousCompanies.add(new Company("gusto"));
+        previousCompanies.add(new Company("google", 2));
+        previousCompanies.add(new Company("dropbox", 1));
+        previousCompanies.add(new Company("gusto", 0));
         interviewer.setPreviousCompanies(previousCompanies);
 
         return interviewer;
@@ -157,13 +158,14 @@ public class DummyData {
         Interviewer interviewer = new Interviewer();
         interviewer.setAvatar(R.drawable.doris_lady_interviewer);
         interviewer.setFullName("Doris Esther");
-        interviewer.setCurrentCompany(new Company("google"));
+        interviewer.setCurrentCompany(new Company("google", 2));
         interviewer.setPosition("Senior Back-End Engineer");
+        interviewer.setPositionType(1);
 
         List<Company> previousCompanies = new ArrayList<>();
-        previousCompanies.add(new Company("google"));
-        previousCompanies.add(new Company("dropbox"));
-        previousCompanies.add(new Company("gusto"));
+        previousCompanies.add(new Company("google", 2));
+        previousCompanies.add(new Company("dropbox", 1));
+        previousCompanies.add(new Company("gusto", 0));
         interviewer.setPreviousCompanies(previousCompanies);
 
         return interviewer;
@@ -174,13 +176,14 @@ public class DummyData {
         Interviewer interviewer = new Interviewer();
         interviewer.setAvatar(R.drawable.executive_woman_interviewer);
         interviewer.setFullName("Dawn Bellepor");
-        interviewer.setCurrentCompany(new Company("google"));
+        interviewer.setCurrentCompany(new Company("google", 2));
         interviewer.setPosition("Senior Front-End Engineer");
+        interviewer.setPositionType(0);
 
         List<Company> previousCompanies = new ArrayList<>();
-        previousCompanies.add(new Company("google"));
-        previousCompanies.add(new Company("dropbox"));
-        previousCompanies.add(new Company("gusto"));
+        previousCompanies.add(new Company("google", 2));
+        previousCompanies.add(new Company("dropbox", 1));
+        previousCompanies.add(new Company("gusto", 0));
         interviewer.setPreviousCompanies(previousCompanies);
 
         return interviewer;
@@ -191,13 +194,14 @@ public class DummyData {
         Interviewer interviewer = new Interviewer();
         interviewer.setAvatar(R.drawable.fitness_girl_avatar);
         interviewer.setFullName("Jennifer Marlowe");
-        interviewer.setCurrentCompany(new Company("gusto"));
+        interviewer.setCurrentCompany(new Company("gusto", 0));
         interviewer.setPosition("Junior iOS Developer");
+        interviewer.setPositionType(2);
 
         List<Company> previousCompanies = new ArrayList<>();
-        previousCompanies.add(new Company("google"));
-        previousCompanies.add(new Company("dropbox"));
-        previousCompanies.add(new Company("gusto"));
+        previousCompanies.add(new Company("google", 2));
+        previousCompanies.add(new Company("dropbox", 1));
+        previousCompanies.add(new Company("gusto", 0));
         interviewer.setPreviousCompanies(previousCompanies);
 
         return interviewer;
@@ -208,13 +212,14 @@ public class DummyData {
         Interviewer interviewer = new Interviewer();
         interviewer.setAvatar(R.drawable.happy_man_interviewer);
         interviewer.setFullName("Mac Hamm");
-        interviewer.setCurrentCompany(new Company("dropbox"));
+        interviewer.setCurrentCompany(new Company("dropbox", 1));
         interviewer.setPosition("Senior Android Engineer");
+        interviewer.setPositionType(3);
 
         List<Company> previousCompanies = new ArrayList<>();
-        previousCompanies.add(new Company("google"));
-        previousCompanies.add(new Company("dropbox"));
-        previousCompanies.add(new Company("gusto"));
+        previousCompanies.add(new Company("google", 2));
+        previousCompanies.add(new Company("dropbox", 1));
+        previousCompanies.add(new Company("gusto", 0));
         interviewer.setPreviousCompanies(previousCompanies);
 
         return interviewer;
@@ -225,13 +230,14 @@ public class DummyData {
         Interviewer interviewer = new Interviewer();
         interviewer.setAvatar(R.drawable.happy_woman_interviewer);
         interviewer.setFullName("Shirley Conner");
-        interviewer.setCurrentCompany(new Company("dropbox"));
+        interviewer.setCurrentCompany(new Company("dropbox", 1));
         interviewer.setPosition("Junior iOS Developer");
+        interviewer.setPositionType(2);
 
         List<Company> previousCompanies = new ArrayList<>();
-        previousCompanies.add(new Company("google"));
-        previousCompanies.add(new Company("dropbox"));
-        previousCompanies.add(new Company("gusto"));
+        previousCompanies.add(new Company("google", 2));
+        previousCompanies.add(new Company("dropbox", 1));
+        previousCompanies.add(new Company("gusto", 0));
         interviewer.setPreviousCompanies(previousCompanies);
 
         return interviewer;
@@ -242,13 +248,14 @@ public class DummyData {
         Interviewer interviewer = new Interviewer();
         interviewer.setAvatar(R.drawable.mercenary_woman_interviewer);
         interviewer.setFullName("Sonya Koslavoka");
-        interviewer.setCurrentCompany(new Company("gusto"));
+        interviewer.setCurrentCompany(new Company("gusto", 0));
         interviewer.setPosition("Junior Back-end Engineer");
+        interviewer.setPositionType(1);
 
         List<Company> previousCompanies = new ArrayList<>();
-        previousCompanies.add(new Company("google"));
-        previousCompanies.add(new Company("dropbox"));
-        previousCompanies.add(new Company("gusto"));
+        previousCompanies.add(new Company("google", 2));
+        previousCompanies.add(new Company("dropbox", 1));
+        previousCompanies.add(new Company("gusto", 0));
         interviewer.setPreviousCompanies(previousCompanies);
 
         return interviewer;
@@ -259,13 +266,14 @@ public class DummyData {
         Interviewer interviewer = new Interviewer();
         interviewer.setAvatar(R.drawable.silly_man_interviewer);
         interviewer.setFullName("Tony McDonald");
-        interviewer.setCurrentCompany(new Company("google"));
+        interviewer.setCurrentCompany(new Company("google", 2));
         interviewer.setPosition("Junior Front-end Engineer");
+        interviewer.setPositionType(0);
 
         List<Company> previousCompanies = new ArrayList<>();
-        previousCompanies.add(new Company("google"));
-        previousCompanies.add(new Company("dropbox"));
-        previousCompanies.add(new Company("gusto"));
+        previousCompanies.add(new Company("google", 2));
+        previousCompanies.add(new Company("dropbox", 1));
+        previousCompanies.add(new Company("gusto", 0));
         interviewer.setPreviousCompanies(previousCompanies);
 
         return interviewer;
@@ -276,13 +284,14 @@ public class DummyData {
         Interviewer interviewer = new Interviewer();
         interviewer.setAvatar(R.drawable.speaker_man_interviewer);
         interviewer.setFullName("Charles Olsen");
-        interviewer.setCurrentCompany(new Company("google"));
+        interviewer.setCurrentCompany(new Company("google", 2));
         interviewer.setPosition("Senior Back-end Engineer");
+        interviewer.setPositionType(1);
 
         List<Company> previousCompanies = new ArrayList<>();
-        previousCompanies.add(new Company("google"));
-        previousCompanies.add(new Company("dropbox"));
-        previousCompanies.add(new Company("gusto"));
+        previousCompanies.add(new Company("google", 2));
+        previousCompanies.add(new Company("dropbox", 1));
+        previousCompanies.add(new Company("gusto", 0));
         interviewer.setPreviousCompanies(previousCompanies);
 
         return interviewer;
@@ -293,13 +302,14 @@ public class DummyData {
         Interviewer interviewer = new Interviewer();
         interviewer.setAvatar(R.drawable.woman_phone_interviewer);
         interviewer.setFullName("Janet Howell");
-        interviewer.setCurrentCompany(new Company("gusto"));
+        interviewer.setCurrentCompany(new Company("gusto", 0));
         interviewer.setPosition("Junior Android Developer");
+        interviewer.setPositionType(3);
 
         List<Company> previousCompanies = new ArrayList<>();
-        previousCompanies.add(new Company("google"));
-        previousCompanies.add(new Company("dropbox"));
-        previousCompanies.add(new Company("gusto"));
+        previousCompanies.add(new Company("google", 2));
+        previousCompanies.add(new Company("dropbox", 1));
+        previousCompanies.add(new Company("gusto", 0));
         interviewer.setPreviousCompanies(previousCompanies);
 
         return interviewer;

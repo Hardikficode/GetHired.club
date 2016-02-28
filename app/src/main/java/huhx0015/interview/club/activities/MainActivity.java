@@ -35,6 +35,7 @@ import huhx0015.interview.club.services.SinchService;
 import huhx0015.interview.club.ui.adapter.DrawerAdapter;
 import huhx0015.interview.club.ui.adapter.InterviewerAdapter;
 import huhx0015.interview.club.utils.image.BackgroundUtils;
+import huhx0015.interview.club.utils.user.FilterUtil;
 import huhx0015.interview.club.utils.user.UserUtil;
 
 public class MainActivity extends BaseActivity implements OnInterviewerSelected, OnDrawerItemSelected,
@@ -212,24 +213,8 @@ public class MainActivity extends BaseActivity implements OnInterviewerSelected,
 
     @Override
     public void drawerItemClicked(String key) {
-
-        if (mSharedPreferences != null) {
-
-            if (key.equals(getString(R.string.pref_key_early_start_up))) {
-
-            } else if (key.equals(getString(R.string.pref_key_funded_start_up))) {
-
-            } else if (key.equals(getString(R.string.pref_key_corporation))) {
-
-            } else if (key.equals(getString(R.string.pref_key_front_end))) {
-
-            } else if (key.equals(getString(R.string.pref_key_back_end))) {
-
-            } else if (key.equals(getString(R.string.pref_key_android))) {
-
-            } else if (key.equals(getString(R.string.pref_key_ios))) {
-
-            }
-        }
+        List<Interviewer> filteredInterviewList = FilterUtil.filterList(this);
+        setUpRecyclerView();
+        setRecyclerList(filteredInterviewList);
     }
 }

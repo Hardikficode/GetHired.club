@@ -9,10 +9,12 @@ public class Company {
     private String companyName;
     private String companyNameKey;
     private int companyLogoId;
+    private int companyType; // 0 = Early Startup | 1 = Funded Startup | 2 = Corporation
 
-    public Company(String companyNameKey) {
+    public Company(String companyNameKey, int type) {
         this.companyName = getCompanyName(companyNameKey);
         this.companyLogoId = getCompanyLogoId(companyNameKey);
+        this.companyType = type;
     }
 
     public int getCompanyLogoId(String companyNameKey){
@@ -65,5 +67,13 @@ public class Company {
 
     public void setCompanyLogoId(int companyLogoId) {
         this.companyLogoId = companyLogoId;
+    }
+
+    public int getCompanyType() {
+        return companyType;
+    }
+
+    public void setCompanyType(int companyType) {
+        this.companyType = companyType;
     }
 }

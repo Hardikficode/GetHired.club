@@ -15,6 +15,7 @@ public class Interviewer {
     private String position;
 
     private int avatar;
+    private int positionType; // 0 = Front-End | 1 = Back-End | 2 = iOS | 3 = Android
 
     private Company currentCompany;
 
@@ -78,4 +79,14 @@ public class Interviewer {
     public void setAvatar(int avatar) {
         this.avatar = avatar;
     }
+
+    public int getPositionType() {
+        return positionType;
+    }
+
+    public void setPositionType(int positionType) {
+        this.positionType = positionType;
+    }
+
 }
+
