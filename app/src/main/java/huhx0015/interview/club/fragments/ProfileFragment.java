@@ -136,14 +136,9 @@ public class ProfileFragment extends Fragment {
         pastCompaniesValueText.setShadowLayer(4, 2, 2, Color.BLACK);
     }
 
-    @OnClick(R.id.profile_call_button)
+    @OnClick(R.id.call_fab_button)
     public void performCallButtonClick() {
         initiateCall(InterviewConstants.SINCH_USERNAME_CALLER);
-    }
-
-    @OnClick(R.id.profile_back_button)
-    public void performBackButtonClick() {
-        // TODO: Discontinue this fragment.
     }
 
     /** SINCH METHODS __________________________________________________________________________ **/

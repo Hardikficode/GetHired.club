@@ -11,6 +11,8 @@ import android.widget.TextView;
 import com.squareup.picasso.Picasso;
 import java.util.List;
 import huhx0015.interview.club.R;
+import huhx0015.interview.club.activities.MainActivity;
+import huhx0015.interview.club.interfaces.OnInterviewerSelected;
 import huhx0015.interview.club.model.Interviewer;
 
 /**
@@ -22,7 +24,7 @@ public class InterviewerAdapter extends RecyclerView.Adapter<InterviewerAdapter.
     /** CLASS VARIABLES ________________________________________________________________________ **/
 
     // ACTIVITY VARIABLES
-    private Activity activity;
+    private MainActivity activity;
 
     // LIST VARIABLES
     private List<Interviewer> interviewerList;
@@ -32,7 +34,7 @@ public class InterviewerAdapter extends RecyclerView.Adapter<InterviewerAdapter.
 
     /** INITIALIZATION METHODS _________________________________________________________________ **/
 
-    public InterviewerAdapter(List<Interviewer> list, Activity act) {
+    public InterviewerAdapter(List<Interviewer> list, MainActivity act) {
         this.activity = act;
         this.interviewerList = list;
     }
@@ -51,7 +53,7 @@ public class InterviewerAdapter extends RecyclerView.Adapter<InterviewerAdapter.
 
             @Override
             public void onItemClick(View caller, int position) {
-                // TODO: LAUNCH VIEW HERE.
+                displayInterviewerProfile(interviewerList.get(position));
             }
         });
 
@@ -86,6 +88,13 @@ public class InterviewerAdapter extends RecyclerView.Adapter<InterviewerAdapter.
     @Override
     public void onAttachedToRecyclerView(RecyclerView recyclerView) {
         super.onAttachedToRecyclerView(recyclerView);
+    }
+
+    /** INTERFACE METHODS ______________________________________________________________________ **/
+
+    private void displayInterviewerProfile(Interviewer interviewer) {
+        try { ((OnInterviewerSelected) activity).interviewerSelected(interviewer); }
+        catch (ClassCastException cce) {} // Catch for class cast exception errors.
     }
 
     /** SUBCLASSES _____________________________________________________________________________ **/
