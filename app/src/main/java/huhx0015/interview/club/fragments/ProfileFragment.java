@@ -4,8 +4,10 @@ import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -24,9 +26,11 @@ import huhx0015.interview.club.activities.MainActivity;
 import huhx0015.interview.club.constants.InterviewConstants;
 import huhx0015.interview.club.model.Company;
 import huhx0015.interview.club.services.SinchService;
+import huhx0015.interview.club.ui.toast.ToastUtil;
 import huhx0015.interview.club.utils.image.BackgroundUtils;
 import huhx0015.interview.club.R;
 import huhx0015.interview.club.model.Interviewer;
+import huhx0015.interview.club.utils.user.UserUtil;
 
 /**
  * Created by Michael Yoon Huh on 2/27/2016.
@@ -34,6 +38,10 @@ import huhx0015.interview.club.model.Interviewer;
 public class ProfileFragment extends Fragment {
 
     /** CLASS VARIABLES ________________________________________________________________________ **/
+
+    private final static String LOG_TAG = ProfileFragment.class.getSimpleName();
+
+    private Handler sinchServiceHandler = new Handler(); // Handler for the thread.
 
     private Interviewer interviewer;
 
@@ -148,20 +156,18 @@ public class ProfileFragment extends Fragment {
 
     private void initiateCall(String userName) {
 
-        if (!activity.getSinchServiceInterface().isStarted() && activity.getSinchServiceInterface().getUserName() != InterviewConstants.SINCH_USERNAME_CALLER) {
+        if (activity.getSinchServiceInterface().isStarted() && !activity.getSinchServiceInterface().getUserName().equals(UserUtil.getDeviceOwnerName(activity))) {
             activity.getSinchServiceInterface().stopClient(); // Stops the Sinch Service thread.
-
-            activity.currentSinchUsername = InterviewConstants.SINCH_USERNAME_CALLER;
-
-            activity.startSinchServiceThread(true); // Starts the Sinch Service thread.
+            startSinchServiceThread(true); // Launches thread to restart Sinch Service as caller.
         }
 
-        else {
+        else if (activity.getSinchServiceInterface().isStarted()) {
             openCallActivity(userName);
         }
     }
 
     private void openCallActivity(String username) {
+
         Call call = activity.getSinchServiceInterface().callUserVideo(InterviewConstants.SINCH_USERNAME_RECEIVER);
         String callId = call.getCallId();
 
@@ -170,4 +176,36 @@ public class ProfileFragment extends Fragment {
         callScreen.putExtra(InterviewConstants.SINCH_VIDEO_RECEPIENT, username);
         startActivity(callScreen);
     }
+
+    /** THREAD METHODS _________________________________________________________________________ **/
+
+    public void startSinchServiceThread(boolean isStart) {
+        if (isStart) {
+            Log.d(LOG_TAG, "startSinchServiceThread(): Sinch service thread started.");
+            ToastUtil.toastyPopUp("Preparing Sinch Service...", activity);
+            sinchServiceHandler.postDelayed(sinchServiceThread, 1000); // Begins thread callbacks.
+        } else {
+            Log.d(LOG_TAG, "startSinchServiceThread(): Sinch service thread stopped.");
+            sinchServiceHandler.removeCallbacks(sinchServiceThread); // Removes thread callbacks.
+        }
+    }
+
+    private Runnable sinchServiceThread = new Runnable() {
+
+        public void run() {
+
+            Log.d(LOG_TAG, "sinchServiceThread(): Thread running...");
+
+            if (activity.getSinchServiceInterface() != null && !activity.getSinchServiceInterface().isStarted()) {
+                activity.getSinchServiceInterface().startClient(UserUtil.getDeviceOwnerName(activity));
+                ToastUtil.toastyPopUp("Sinch! Service is ready to make a call!", activity);
+                ToastUtil.toastyPopUp("Sinch! Username: " + activity.getSinchServiceInterface().getUserName(), activity);
+            } else if (activity.getSinchServiceInterface().isStarted()) {
+                openCallActivity(interviewer.getFullName());
+                sinchServiceHandler.removeCallbacks(sinchServiceThread);
+            } else {
+                sinchServiceHandler.postDelayed(this, 1000); // Thread is run again in 1000 ms.
+            }
+        }
+    };
 }

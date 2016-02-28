@@ -18,8 +18,6 @@ import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
-
 import com.makeramen.roundedimageview.RoundedImageView;
 import com.makeramen.roundedimageview.RoundedTransformationBuilder;
 import com.sinch.android.rtc.SinchError;
@@ -63,6 +61,7 @@ public class MainActivity extends BaseActivity implements OnInterviewerSelected,
     @Bind(R.id.recycler_view) RecyclerView recyclerView;
     @Bind(R.id.drawer_header_avatar) RoundedImageView drawerAvatarImage;
     @Bind(R.id.drawer_header_name) TextView drawerHeaderName;
+    @Bind(R.id.my_interviewers_text) TextView myInterviewersText;
     @Bind(R.id.toolbar) Toolbar mToolBar;
 
     /** ACTIVITY LIFECYCLE METHODS _____________________________________________________________ **/
@@ -80,14 +79,20 @@ public class MainActivity extends BaseActivity implements OnInterviewerSelected,
                 getString(R.string.preference_file_key),
                 Context.MODE_PRIVATE);
 
-        setUpDrawer();
-        setUpRecyclerView();
-        setRecyclerList(DummyData.getInterviewerSet(0));
+        setUpLayout();
 
         startSinchServiceThread(true); // Initializes the Sinch Service thread.
     }
 
     /** LAYOUT METHODS _________________________________________________________________________ **/
+
+    private void setUpLayout() {
+        setUpDrawer();
+        setUpRecyclerView();
+        setRecyclerList(DummyData.getInterviewerSet(0));
+
+        myInterviewersText.setShadowLayer(4, 2, 2, Color.BLACK);
+    }
 
     private void setUpDrawer(){
         mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -208,12 +213,6 @@ public class MainActivity extends BaseActivity implements OnInterviewerSelected,
 
     /** SINCH SERVICE METHODS __________________________________________________________________ **/
 
-    private void initializeSinchService() {
-        if (getSinchServiceInterface() != null && !getSinchServiceInterface().isStarted()) {
-            getSinchServiceInterface().startClient(InterviewConstants.SINCH_USERNAME_RECEIVER);
-        }
-    }
-
     @Override
     protected void onServiceConnected() {
         getSinchServiceInterface().setStartListener(this);
@@ -246,7 +245,8 @@ public class MainActivity extends BaseActivity implements OnInterviewerSelected,
 
             if (getSinchServiceInterface() != null && !getSinchServiceInterface().isStarted()) {
                 getSinchServiceInterface().startClient(currentSinchUsername);
-                ToastUtil.toastyPopUp("Sinch Service is ready", MainActivity.this);
+                ToastUtil.toastyPopUp("Sinch! Service is ready", MainActivity.this);
+                ToastUtil.toastyPopUp("Sinch! Username: " + getSinchServiceInterface().getUserName(), MainActivity.this);
                 sinchServiceHandler.removeCallbacks(sinchServiceThread);
             } else {
                 sinchServiceHandler.postDelayed(this, 1000); // Thread is run again in 1000 ms.
