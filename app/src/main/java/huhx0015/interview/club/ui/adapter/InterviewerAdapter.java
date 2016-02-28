@@ -19,9 +19,7 @@ import huhx0015.interview.club.model.Interviewer;
 
 public class InterviewerAdapter extends RecyclerView.Adapter<InterviewerAdapter.ListViewHolder> {
 
-    /**
-     * CLASS VARIABLES ________________________________________________________________________
-     **/
+    /** CLASS VARIABLES ________________________________________________________________________ **/
 
     // ACTIVITY VARIABLES
     private Activity activity;
