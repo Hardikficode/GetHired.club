@@ -3,11 +3,27 @@
     android:layout_width="match_parent"
     android:layout_height="200dp"
     android:orientation="vertical">
+
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@drawable/golden_gate_bridge_background"
-        android:scaleType="centerCrop" />
+        android:scaleType="centerCrop"
+        android:id="@+id/drawer_header_image" />
+
+    <com.makeramen.roundedimageview.RoundedImageView
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="96dp"
+        android:layout_height="96dp"
+        android:id="@+id/drawer_header_avatar"
+        android:scaleType="centerCrop"
+        android:layout_gravity="left|center_vertical"
+        app:riv_corner_radius="30dip"
+        app:riv_border_width="1dip"
+        app:riv_mutate_background="true"
+        app:riv_oval="true"
+        android:layout_marginLeft="16dp" />
+
     <TextView
         style="@style/TextAppearance.AppCompat.Subhead"
         android:layout_width="match_parent"
@@ -15,5 +31,6 @@
         android:layout_gravity="bottom"
         android:layout_margin="16dp"
         android:text="Chris Kumar"
-        android:textColor="@android:color/white" />
+        android:textColor="@android:color/white"
+        android:id="@+id/drawer_header_name" />
 </FrameLayout>

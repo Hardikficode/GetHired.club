@@ -133,7 +133,7 @@ public class ProfileFragment extends Fragment {
         profileName.setShadowLayer(2, 2, 2, Color.BLACK);
         profileCompany.setShadowLayer(2, 2, 2, Color.BLACK);
         profilePosition.setShadowLayer(2, 2, 2, Color.BLACK);
-        pastCompaniesValueText.setShadowLayer(4, 2, 2, Color.BLACK);
+        pastCompaniesText.setShadowLayer(4, 2, 2, Color.BLACK);
     }
 
     @OnClick(R.id.call_fab_button)

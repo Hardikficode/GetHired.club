@@ -2,6 +2,7 @@ package huhx0015.interview.club.activities;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -12,8 +13,14 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.FrameLayout;
+import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.TextView;
+import com.makeramen.roundedimageview.RoundedImageView;
+import com.makeramen.roundedimageview.RoundedTransformationBuilder;
 import com.sinch.android.rtc.SinchError;
+import com.squareup.picasso.Picasso;
+import com.squareup.picasso.Transformation;
 import java.util.List;
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -26,17 +33,22 @@ import huhx0015.interview.club.model.Interviewer;
 import huhx0015.interview.club.services.SinchService;
 import huhx0015.interview.club.ui.adapter.DrawerAdapter;
 import huhx0015.interview.club.ui.adapter.InterviewerAdapter;
+import huhx0015.interview.club.utils.image.BackgroundUtils;
+import huhx0015.interview.club.utils.user.UserUtil;
 
 public class MainActivity extends BaseActivity implements OnInterviewerSelected, SinchService.StartFailedListener {
 
-    private DrawerLayout mDrawerLayout;
-    private Toolbar mToolBar;
     private SharedPreferences mSharedPreferences;
     private Context mContext = this;
     private boolean isFragmentDisplayed = false;
 
+    @Bind(R.id.drawer_layout) DrawerLayout mDrawerLayout;
     @Bind(R.id.main_activity_fragment_container) FrameLayout fragmentContainer;
+    @Bind(R.id.drawer_header_image) ImageView drawerHeaderImage;
     @Bind(R.id.recycler_view) RecyclerView recyclerView;
+    @Bind(R.id.drawer_header_avatar) RoundedImageView drawerAvatarImage;
+    @Bind(R.id.drawer_header_name) TextView drawerHeaderName;
+    @Bind(R.id.toolbar) Toolbar mToolBar;
 
     /** ACTIVITY LIFECYCLE METHODS _____________________________________________________________ **/
 
@@ -47,7 +59,6 @@ public class MainActivity extends BaseActivity implements OnInterviewerSelected,
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
 
-        mToolBar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(mToolBar);
 
         mSharedPreferences = getSharedPreferences(
@@ -65,7 +76,32 @@ public class MainActivity extends BaseActivity implements OnInterviewerSelected,
         mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
         setUpDrawerCompanyList();
         setUpDrawerPositionList();
+        setUpDrawerHeader();
+    }
 
+    private void setUpDrawerHeader() {
+
+        // Sets the owner name.
+        drawerHeaderName.setText(UserUtil.getDeviceOwnerName(this));
+
+        // Sets the rounded image view transformation for the avatar image.
+        Transformation transformation = new RoundedTransformationBuilder()
+                .borderColor(Color.WHITE)
+                .borderWidthDp(1)
+                .cornerRadiusDp(30)
+                .oval(true)
+                .build();
+
+        // Loads the avatar image into the RoundedImageView.
+        Picasso.with(this)
+                .load(DummyData.getRandomInterviewer().getAvatar())
+                .transform(transformation)
+                .into(drawerAvatarImage);
+
+        // Sets a random image for the drawer header.
+        Picasso.with(this)
+                .load(BackgroundUtils.setRandomBackground())
+                .into(drawerHeaderImage);
     }
 
     private void setUpDrawerCompanyList(){
@@ -91,7 +127,6 @@ public class MainActivity extends BaseActivity implements OnInterviewerSelected,
                 getString(R.string.pref_key_back_end),
                 getString(R.string.pref_key_android),
                 getString(R.string.pref_key_ios)};
-
 
         DrawerAdapter adapter = new DrawerAdapter(this,
                 R.layout.drawer_list_item, R.id.drawer_item_title, drawerTitles, prefCompanyKeys);
