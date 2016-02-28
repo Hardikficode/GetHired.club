@@ -1,5 +1,6 @@
 package huhx0015.interview.club.fragments;
 
+import android.app.Activity;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -10,9 +11,15 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import com.makeramen.roundedimageview.RoundedImageView;
+import com.makeramen.roundedimageview.RoundedTransformationBuilder;
 import com.squareup.picasso.Picasso;
+import com.squareup.picasso.Transformation;
 import butterknife.Bind;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
+import huhx0015.interview.club.activities.MainActivity;
+import huhx0015.interview.club.constants.InterviewConstants;
 import huhx0015.interview.club.utils.image.BackgroundUtils;
 import huhx0015.interview.club.R;
 import huhx0015.interview.club.model.Interviewer;
@@ -26,12 +33,16 @@ public class ProfileFragment extends Fragment {
 
     private Interviewer interviewer;
 
-    @Bind(R.id.profile_text_container) LinearLayout profileTextContainer;
+    private MainActivity activity;
+
     @Bind(R.id.profile_cover_image) ImageView profileCoverImage;
-    @Bind(R.id.profile_image_avatar) ImageView profileAvatar;
+    @Bind(R.id.profile_text_container) LinearLayout profileTextContainer;
+    @Bind(R.id.profile_image_avatar) RoundedImageView profileAvatar;
     @Bind(R.id.profile_name_text) TextView profileName;
     @Bind(R.id.profile_company_text) TextView profileCompany;
     @Bind(R.id.profile_position_text) TextView profilePosition;
+    @Bind(R.id.past_companies_text) TextView pastCompaniesText;
+    @Bind(R.id.past_companies_value) TextView pastCompaniesValueText;
 
     /** CONSTRUCTOR METHODS ____________________________________________________________________ **/
 
@@ -40,6 +51,12 @@ public class ProfileFragment extends Fragment {
     }
 
     /** FRAGMENT LIFECYCLE METHODS _____________________________________________________________ **/
+
+    @Override
+    public void onAttach(Activity activity) {
+        super.onAttach(activity);
+        this.activity = (MainActivity) activity;
+    }
 
     @Nullable
     @Override
@@ -79,17 +96,59 @@ public class ProfileFragment extends Fragment {
             profileCompany.setText(interviewer.getCurrentCompany());
             profilePosition.setText(interviewer.getPosition());
 
+            String pastCompanyValues = "Not Available";
+            if (interviewer.getPreviousCompanies().size() > 0) {
+
+                pastCompanyValues = "";
+                for (String company : interviewer.getPreviousCompanies()) {
+                    pastCompanyValues = pastCompanyValues + company + "\n";
+                }
+
+            } else { pastCompaniesValueText.setText(pastCompanyValues); }
+
+            // Sets the rounded image view transformation for the avatar image.
+            Transformation transformation = new RoundedTransformationBuilder()
+                    .borderColor(Color.BLACK)
+                    .borderWidthDp(1)
+                    .cornerRadiusDp(30)
+                    .oval(true)
+                    .build();
+
+            // Loads the avatar image into the RoundedImageView.
             Picasso.with(getContext())
                     .load(interviewer.getAvatar())
+                    .transform(transformation)
                     .into(profileAvatar);
         }
 
-        profileTextContainer.setAlpha(0.8f);
+        profileTextContainer.setAlpha(0.4f);
     }
 
     private void initTextAttributes() {
         profileName.setShadowLayer(2, 2, 2, Color.BLACK);
         profileCompany.setShadowLayer(2, 2, 2, Color.BLACK);
         profilePosition.setShadowLayer(2, 2, 2, Color.BLACK);
+        pastCompaniesValueText.setShadowLayer(4, 2, 2, Color.BLACK);
+    }
+
+    @OnClick(R.id.profile_call_button)
+    public void performCallButtonClick() {
+        initiateCall(InterviewConstants.SINCH_USERNAME_CALLER);
+    }
+
+    @OnClick(R.id.profile_back_button)
+    public void performBackButtonClick() {
+        // TODO: Discontinue this fragment.
+    }
+
+    /** SINCH METHODS __________________________________________________________________________ **/
+
+    private void initiateCall(String userName) {
+//        Call call = activity.getSinchServiceInterface().callUserVideo(userName);
+//        String callId = call.getCallId();
+//
+//        Intent callScreen = new Intent(this, CallScreenActivity.class);
+//        callScreen.putExtra(SinchService.CALL_ID, callId);
+//        startActivity(callScreen);
     }
 }
