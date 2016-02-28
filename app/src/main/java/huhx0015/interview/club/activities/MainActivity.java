@@ -16,7 +16,6 @@ import huhx0015.interview.club.ui.adapter.DrawerAdapter;
 public class MainActivity extends AppCompatActivity {
 
     private DrawerLayout mDrawerLayout;
-    private ListView mDrawerList;
     private Toolbar mToolBar;
     private SharedPreferences mSharedPreferences;
     private Context mContext = this;
@@ -44,11 +43,14 @@ public class MainActivity extends AppCompatActivity {
         Drawer set-up
      */
     private void setUpDrawer(){
-
-
-        // drawer
         mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
-        mDrawerList = (ListView) findViewById(R.id.drawer_list_view);
+        setUpDrawerCompanyList();
+        setUpDrawerPositionList();
+
+    }
+
+    private void setUpDrawerCompanyList(){
+        ListView listView = (ListView) findViewById(R.id.drawer_company_list_view);
 
         String[] drawerTitles = new String[]{"Early Startup", "Funded Startup", "Corporation"};
         String[] prefCompanyKeys = new String[]{
@@ -59,10 +61,24 @@ public class MainActivity extends AppCompatActivity {
 
         DrawerAdapter adapter = new DrawerAdapter(this,
                 R.layout.drawer_list_item, R.id.drawer_item_title, drawerTitles, prefCompanyKeys);
-        mDrawerList.setAdapter(adapter);
-
+        listView.setAdapter(adapter);
     }
 
+    private void setUpDrawerPositionList(){
+        ListView listView = (ListView) findViewById(R.id.drawer_position_list_view);
+
+        String[] drawerTitles = new String[]{"Front-end", "Back-end", "Android", "iOS"};
+        String[] prefCompanyKeys = new String[]{
+                getString(R.string.pref_key_front_end),
+                getString(R.string.pref_key_back_end),
+                getString(R.string.pref_key_android),
+                getString(R.string.pref_key_ios)};
+
+
+        DrawerAdapter adapter = new DrawerAdapter(this,
+                R.layout.drawer_list_item, R.id.drawer_item_title, drawerTitles, prefCompanyKeys);
+        listView.setAdapter(adapter);
+    }
 
 
     /** ACTIVITY OVERRIDE METHODS ______________________________________________________________ **/

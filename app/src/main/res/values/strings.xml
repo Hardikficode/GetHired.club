@@ -9,4 +9,8 @@
     <string name="pref_key_corporation">pref_key_corporation</string>
     <string name="drawer_open">drawer_open</string>
     <string name="drawer_close">drawer_close</string>
+    <string name="pref_key_front_end">pref_key_front_end</string>
+    <string name="pref_key_back_end">pref_key_back_end</string>
+    <string name="pref_key_android">android</string>
+    <string name="pref_key_ios">pref_key_ios</string>
 </resources>

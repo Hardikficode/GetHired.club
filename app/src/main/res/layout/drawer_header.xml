@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="150dp"
+    android:layout_height="200dp"
     android:orientation="vertical">
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@mipmap/ic_launcher"
+        android:background="@drawable/golden_gate_bridge_background"
         android:scaleType="centerCrop" />
     <TextView
         style="@style/TextAppearance.AppCompat.Subhead"
@@ -14,6 +14,6 @@
         android:layout_height="wrap_content"
         android:layout_gravity="bottom"
         android:layout_margin="16dp"
-        android:text="Your Name Here"
+        android:text="Chris Kumar"
         android:textColor="@android:color/white" />
 </FrameLayout>

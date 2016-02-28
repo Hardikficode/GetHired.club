@@ -48,26 +48,64 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:orientation="vertical">
 
                 <include layout="@layout/drawer_header"></include>
 
-                <ListView android:id="@+id/drawer_list_view"
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_gravity="start"
-                    android:choiceMode="singleChoice"
-                    android:divider="@android:color/transparent"
-                    android:dividerHeight="0dp"
-                    android:background="#ffffff"
-                    android:fitsSystemWindows="true"
+                    android:orientation="vertical"
                     android:paddingLeft="16dp"
-                    android:paddingRight="16dp"/>
+                    android:paddingRight="16dp"
+                    android:paddingTop="16dp">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="COMPANY"
+                        android:textColor="@android:color/darker_gray"
+                        android:textAppearance="?android:textAppearanceLarge"/>
+
+                    <ListView android:id="@+id/drawer_company_list_view"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="start"
+                        android:choiceMode="singleChoice"
+                        android:divider="@android:color/transparent"
+                        android:dividerHeight="0dp"
+                        android:background="#ffffff"
+                        android:fitsSystemWindows="true"
+                        android:paddingLeft="16dp"/>
+
+                    <!--<View style="@style/NavigationViewLineSeperator"/>-->
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="POSITION"
+                        android:textColor="@android:color/darker_gray"
+                        android:textAppearance="?android:textAppearanceLarge"
+                        android:paddingTop="16dp"/>
 
 
+                    <ListView android:id="@+id/drawer_position_list_view"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="start"
+                        android:choiceMode="singleChoice"
+                        android:divider="@android:color/transparent"
+                        android:dividerHeight="0dp"
+                        android:background="#ffffff"
+                        android:fitsSystemWindows="true"
+                        android:paddingLeft="16dp"/>
+
+                </LinearLayout>
 
             </LinearLayout>
+
+
 
         </huhx0015.interview.club.ui.layouts.ScrimInsetsFrameLayout>
 
