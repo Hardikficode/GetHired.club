@@ -1,6 +1,7 @@
 package huhx0015.interview.club.fragments;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -13,13 +14,16 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import com.makeramen.roundedimageview.RoundedImageView;
 import com.makeramen.roundedimageview.RoundedTransformationBuilder;
+import com.sinch.android.rtc.calling.Call;
 import com.squareup.picasso.Picasso;
 import com.squareup.picasso.Transformation;
 import butterknife.Bind;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import huhx0015.interview.club.activities.CallScreenActivity;
 import huhx0015.interview.club.activities.MainActivity;
 import huhx0015.interview.club.constants.InterviewConstants;
+import huhx0015.interview.club.services.SinchService;
 import huhx0015.interview.club.utils.image.BackgroundUtils;
 import huhx0015.interview.club.R;
 import huhx0015.interview.club.model.Interviewer;
@@ -36,7 +40,7 @@ public class ProfileFragment extends Fragment {
     private MainActivity activity;
 
     @Bind(R.id.profile_cover_image) ImageView profileCoverImage;
-    @Bind(R.id.profile_text_container) LinearLayout profileTextContainer;
+    @Bind(R.id.profile_text_sub_container_background) ImageView profileContainerBackground;
     @Bind(R.id.profile_image_avatar) RoundedImageView profileAvatar;
     @Bind(R.id.profile_name_text) TextView profileName;
     @Bind(R.id.profile_company_text) TextView profileCompany;
@@ -73,6 +77,7 @@ public class ProfileFragment extends Fragment {
     @Override
     public void onDestroyView() {
         super.onDestroyView();
+        ButterKnife.unbind(this); // Sets all injected views to null.
     }
 
     /** LAYOUT METHODS _________________________________________________________________________ **/
@@ -108,7 +113,7 @@ public class ProfileFragment extends Fragment {
 
             // Sets the rounded image view transformation for the avatar image.
             Transformation transformation = new RoundedTransformationBuilder()
-                    .borderColor(Color.BLACK)
+                    .borderColor(Color.WHITE)
                     .borderWidthDp(1)
                     .cornerRadiusDp(30)
                     .oval(true)
@@ -121,7 +126,7 @@ public class ProfileFragment extends Fragment {
                     .into(profileAvatar);
         }
 
-        profileTextContainer.setAlpha(0.4f);
+        profileContainerBackground.setAlpha(0.4f);
     }
 
     private void initTextAttributes() {
@@ -144,11 +149,11 @@ public class ProfileFragment extends Fragment {
     /** SINCH METHODS __________________________________________________________________________ **/
 
     private void initiateCall(String userName) {
-//        Call call = activity.getSinchServiceInterface().callUserVideo(userName);
-//        String callId = call.getCallId();
-//
-//        Intent callScreen = new Intent(this, CallScreenActivity.class);
-//        callScreen.putExtra(SinchService.CALL_ID, callId);
-//        startActivity(callScreen);
+        Call call = activity.getSinchServiceInterface().callUserVideo(userName);
+        String callId = call.getCallId();
+
+        Intent callScreen = new Intent(activity, CallScreenActivity.class);
+        callScreen.putExtra(SinchService.CALL_ID, callId);
+        startActivity(callScreen);
     }
 }

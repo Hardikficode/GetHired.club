@@ -1,7 +1,6 @@
 package huhx0015.interview.club.utils.image;
 
 import java.util.Random;
-
 import huhx0015.interview.club.R;
 
 /**

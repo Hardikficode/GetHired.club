@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.content.ServiceConnection;
 import android.os.Bundle;
 import android.os.IBinder;
+import android.support.v7.app.AppCompatActivity;
 
 import huhx0015.interview.club.services.SinchService;
 
@@ -13,7 +14,7 @@ import huhx0015.interview.club.services.SinchService;
  * Created by Michael Yoon Huh on 2/26/2016.
  */
 
-public abstract class BaseActivity extends Activity implements ServiceConnection {
+public abstract class BaseActivity extends AppCompatActivity implements ServiceConnection {
 
     private SinchService.SinchServiceInterface mSinchServiceInterface;
 
@@ -48,7 +49,7 @@ public abstract class BaseActivity extends Activity implements ServiceConnection
         // for subclasses
     }
 
-    protected SinchService.SinchServiceInterface getSinchServiceInterface() {
+    public SinchService.SinchServiceInterface getSinchServiceInterface() {
         return mSinchServiceInterface;
     }
 
