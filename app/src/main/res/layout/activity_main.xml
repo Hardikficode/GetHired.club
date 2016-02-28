@@ -20,11 +20,17 @@
             android:layout_height="match_parent"
             android:orientation="vertical">
 
-            <android.support.v7.widget.Toolbar
-                android:id="@+id/toolbar"
+            <android.support.design.widget.AppBarLayout
                 android:layout_width="match_parent"
-                android:layout_height="?attr/actionBarSize"
-                android:background="?attr/colorPrimaryDark"/>
+                android:layout_height="wrap_content"
+                android:theme="@style/AppTheme.AppBarOverlay">
+
+                <android.support.v7.widget.Toolbar
+                    android:id="@+id/toolbar"
+                    android:layout_width="match_parent"
+                    android:layout_height="?attr/actionBarSize"
+                    android:background="?attr/colorPrimaryDark"/>
+            </android.support.design.widget.AppBarLayout>
 
             <TextView
                 android:layout_width="wrap_content"
@@ -34,7 +40,7 @@
 
         <!-- The navigation drawer -->
         <huhx0015.interview.club.ui.layouts.ScrimInsetsFrameLayout
-            android:layout_width="240dp"
+            android:layout_width="320dp"
             android:layout_height="match_parent"
             android:layout_gravity="start"
             android:background="#ffffff"
@@ -48,14 +54,16 @@
                 <include layout="@layout/drawer_header"></include>
 
                 <ListView android:id="@+id/drawer_list_view"
-                    android:layout_width="240dp"
+                    android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_gravity="start"
                     android:choiceMode="singleChoice"
                     android:divider="@android:color/transparent"
                     android:dividerHeight="0dp"
                     android:background="#ffffff"
-                    android:fitsSystemWindows="true" />
+                    android:fitsSystemWindows="true"
+                    android:paddingLeft="16dp"
+                    android:paddingRight="16dp"/>
 
             </LinearLayout>
 
