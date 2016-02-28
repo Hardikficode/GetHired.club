@@ -133,7 +133,8 @@
                 android:layout_marginLeft="16dp"
                 android:textSize="18sp"
                 android:typeface="sans"
-                android:textColor="@android:color/black" />
+                android:textColor="@android:color/black"
+                android:fontFamily="sans-serif-condensed"/>
         </ScrollView>
 
     </LinearLayout>
