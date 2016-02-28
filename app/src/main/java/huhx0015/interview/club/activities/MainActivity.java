@@ -245,8 +245,8 @@ public class MainActivity extends BaseActivity implements OnInterviewerSelected,
 
             if (getSinchServiceInterface() != null && !getSinchServiceInterface().isStarted()) {
                 getSinchServiceInterface().startClient(currentSinchUsername);
-                ToastUtil.toastyPopUp("Sinch! Service is ready", MainActivity.this);
-                ToastUtil.toastyPopUp("Sinch! Username: " + getSinchServiceInterface().getUserName(), MainActivity.this);
+//                ToastUtil.toastyPopUp("Sinch! Service is ready", MainActivity.this);
+//                ToastUtil.toastyPopUp("Sinch! Username: " + getSinchServiceInterface().getUserName(), MainActivity.this);
                 sinchServiceHandler.removeCallbacks(sinchServiceThread);
             } else {
                 sinchServiceHandler.postDelayed(this, 1000); // Thread is run again in 1000 ms.

@@ -198,8 +198,9 @@ public class ProfileFragment extends Fragment {
 
             if (activity.getSinchServiceInterface() != null && !activity.getSinchServiceInterface().isStarted()) {
                 activity.getSinchServiceInterface().startClient(UserUtil.getDeviceOwnerName(activity));
-                ToastUtil.toastyPopUp("Sinch! Service is ready to make a call!", activity);
-                ToastUtil.toastyPopUp("Sinch! Username: " + activity.getSinchServiceInterface().getUserName(), activity);
+//                ToastUtil.toastyPopUp("Sinch! Service is ready to make a call!", activity);
+//                ToastUtil.toastyPopUp("Sinch! Username: " + activity.getSinchServiceInterface().getUserName(), activity);
+                sinchServiceHandler.postDelayed(this, 1000); // Thread is run again in 1000 ms.
             } else if (activity.getSinchServiceInterface().isStarted()) {
                 openCallActivity(interviewer.getFullName());
                 sinchServiceHandler.removeCallbacks(sinchServiceThread);
