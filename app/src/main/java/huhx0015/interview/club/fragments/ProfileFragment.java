@@ -1,6 +1,7 @@
 package huhx0015.interview.club.fragments;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -13,13 +14,16 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import com.makeramen.roundedimageview.RoundedImageView;
 import com.makeramen.roundedimageview.RoundedTransformationBuilder;
+import com.sinch.android.rtc.calling.Call;
 import com.squareup.picasso.Picasso;
 import com.squareup.picasso.Transformation;
 import butterknife.Bind;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import huhx0015.interview.club.activities.CallScreenActivity;
 import huhx0015.interview.club.activities.MainActivity;
 import huhx0015.interview.club.constants.InterviewConstants;
+import huhx0015.interview.club.services.SinchService;
 import huhx0015.interview.club.utils.image.BackgroundUtils;
 import huhx0015.interview.club.R;
 import huhx0015.interview.club.model.Interviewer;
@@ -144,11 +148,11 @@ public class ProfileFragment extends Fragment {
     /** SINCH METHODS __________________________________________________________________________ **/
 
     private void initiateCall(String userName) {
-//        Call call = activity.getSinchServiceInterface().callUserVideo(userName);
-//        String callId = call.getCallId();
-//
-//        Intent callScreen = new Intent(this, CallScreenActivity.class);
-//        callScreen.putExtra(SinchService.CALL_ID, callId);
-//        startActivity(callScreen);
+        Call call = activity.getSinchServiceInterface().callUserVideo(userName);
+        String callId = call.getCallId();
+
+        Intent callScreen = new Intent(activity, CallScreenActivity.class);
+        callScreen.putExtra(SinchService.CALL_ID, callId);
+        startActivity(callScreen);
     }
 }

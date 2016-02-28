@@ -13,7 +13,7 @@ import android.widget.ListView;
 import huhx0015.interview.club.R;
 import huhx0015.interview.club.ui.adapter.DrawerAdapter;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends BaseActivity {
 
     private DrawerLayout mDrawerLayout;
     private ListView mDrawerList;
