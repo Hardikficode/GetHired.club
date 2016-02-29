@@ -5,9 +5,13 @@ Team: Michael Huh, Xiaofan Fang, Missy Bur
 
 Platform: Android, Web
 
+![gethired](https://cloud.githubusercontent.com/assets/1645482/13383224/7e4013b4-de3b-11e5-965a-269dcd57a569.gif)
+
 Event: LAUNCH Hackathon 2016
 
 Date: February 26 - 28, 2016
+
+Project Website: http://devpost.com/software/gethired-club
 
 Event Website: http://www.launchhackathon.com/
 
