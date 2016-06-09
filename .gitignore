@@ -1,3 +1,9 @@
+/sinch-rtc-sample-calling/build
+/sinch-rtc-sample-messaging/build
+/sinch-rtc-sample-pstn/build
+/sinch-rtc-sample-push/build
+/sinch-rtc-sample-video/build
+/.idea
 *.iml
 .gradle
 /local.properties
