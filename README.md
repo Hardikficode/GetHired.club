@@ -22,7 +22,7 @@ Event Website: http://www.launchhackathon.com/
 
 Get Hired.club is a mobile and web application that directly links interviewees with interviewers for networking and interview experience purposes. Interviewees can speak directly with people working at companies that they are interested in to get a better experience of the company and the culture, as well as building personal connections with people at the company.
 
-Get Hired.club utilizes the Sinch! video call API for the Android and web clients. With the Sinch! video API built-in, users can initate direct video calls with interviewers within the apps. 
+Get Hired.club utilizes the Sinch! video call API for the Android and web clients. With the Sinch! video API built-in, users can initate direct video calls with interviewers within the apps.
 
 ## Web Client
 
